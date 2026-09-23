@@ -15,19 +15,18 @@ const cards = stats.cards;
 const locale = lang === 'zh' ? 'cn' : 'en';
 
 interface Palette {
-  bg: string;
   fg: string;
   accent: string;
 }
 
-const light: Palette = { bg: 'FCFBF7', fg: '1D1B16', accent: 'B5451F' };
-const dark: Palette = { bg: '322E28', fg: 'EAE3D6', accent: 'D8764F' };
+const light: Palette = { fg: '1D1B16', accent: 'B5451F' };
+const dark: Palette = { fg: 'EAE3D6', accent: 'D8764F' };
 
 const statsUrl = (c: Palette) =>
-  `${provider}/api?username=${user}&show_icons=true&hide_border=true&locale=${locale}&bg_color=${c.bg}&title_color=${c.accent}&text_color=${c.fg}&icon_color=${c.accent}`;
+  `${provider}/api?username=${user}&show_icons=true&hide_border=true&locale=${locale}&bg_color=00000000&title_color=${c.accent}&text_color=${c.fg}&icon_color=${c.accent}`;
 
 const langsUrl = (c: Palette) =>
-  `${provider}/api/top-langs/?username=${user}&layout=compact&hide_border=true&locale=${locale}&bg_color=${c.bg}&title_color=${c.accent}&text_color=${c.fg}`;
+  `${provider}/api/top-langs/?username=${user}&layout=compact&hide_border=true&locale=${locale}&bg_color=00000000&title_color=${c.accent}&text_color=${c.fg}`;
 ---
 
 <section class="section" data-github-stats>

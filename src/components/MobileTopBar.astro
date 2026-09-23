@@ -8,13 +8,14 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+const subName = lang === 'zh' ? profile.name.en : profile.name.zh;
 ---
 
 <header class="topbar">
   <div class="tb-id">
     <img class="m-avatar" src={profile.avatar} alt="" width="36" height="36" />
     <div class="tb-text">
-      <span class="tb-name">{profile.name[lang]}</span>
+      <span class="tb-name">{profile.name[lang]}<span class="tb-name-sub mono">{subName}</span></span>
       <span class="tb-role">{profile.roles[lang].join(' · ')}</span>
     </div>
   </div>
@@ -70,6 +71,14 @@ const { lang } = Astro.props;
     font-size: 1.0625rem;
     font-weight: 600;
     line-height: 1.15;
+  }
+  /* 名字后跟随另一种语言的姓名：更小更浅 */
+  .tb-name-sub {
+    margin-left: 8px;
+    font-size: var(--text-xs);
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 0.04em;
   }
   .tb-role {
     font-size: 11px;
