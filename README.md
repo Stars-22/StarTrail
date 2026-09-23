@@ -59,7 +59,7 @@
 
 ```text
 StarTrail/
-├─ astro.config.mjs            # site、i18n（locales/prefixDefaultLocale/redirectToDefaultLocale）
+├─ astro.config.mjs            # Astro 配置（i18n、静态输出等）
 ├─ package.json / tsconfig.json
 ├─ README.md
 ├─ scripts/
@@ -133,8 +133,8 @@ npm run check     # astro check（类型/内容诊断）
 | 字段 | 类型 | 说明 |
 | --- | --- | --- |
 | `title` | string | 站名，用于 `<title>` 与 `og:site_name` |
-| `url` | string | 线上域名（与 `astro.config.mjs` 的 `site` 保持一致） |
-| `defaultLang` | `"zh" \| "en"` | 默认语言（与 `astro.config.mjs` 的 `defaultLocale` 一致） |
+| `url` | string | 线上域名（用于 canonical / og:url 等） |
+| `defaultLang` | `"zh" \| "en"` | 默认语言 |
 | `githubUser` | string | GitHub 用户名（统计图与 `gen-repos` 使用） |
 | `repoUrl` | string | 本站源码仓库地址（页脚链接） |
 | `copyright` | i18n | 版权署名，`{year}` 构建时替换为当前年份 |
@@ -143,8 +143,6 @@ npm run check     # astro check（类型/内容诊断）
 | `githubStats.provider` | string | GitHub Readme Stats 服务地址 |
 | `githubStats.cards` | string[] | 启用的统计卡：`stats`（总览）/ `topLangs`（常用语言） |
 | `features` | object | 功能开关，见下节 |
-
-> 修改 `url` / `defaultLang` 时，请同步修改 `astro.config.mjs` 的 `site` / `i18n.defaultLocale`。
 
 ## 功能开关 features
 

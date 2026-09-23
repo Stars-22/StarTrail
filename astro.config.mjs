@@ -1,11 +1,16 @@
+import { readFileSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
 
-// site 与 defaultLocale 需与 src/data/site.json 的 url / defaultLang 同步维护。
+// site / defaultLocale 均读取自 src/data/site.json（单一数据源），无需两处同步维护。
+const site = JSON.parse(
+  readFileSync(new URL('./src/data/site.json', import.meta.url), 'utf8'),
+);
+
 export default defineConfig({
-  site: 'https://startrail.example.com',
+  site: site.url,
   output: 'static',
   i18n: {
-    defaultLocale: 'en',
+    defaultLocale: site.defaultLang,
     locales: ['zh', 'en'],
     routing: { prefixDefaultLocale: true, redirectToDefaultLocale: false },
   },
