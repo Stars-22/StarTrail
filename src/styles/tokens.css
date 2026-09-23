@@ -51,11 +51,13 @@
   /* 圆角 */
   --radius-pill: 999px;
   --radius-circle: 50%;
+  --radius-lg: 16px;
 
   /* 布局 */
   --bp: 768px;
   --sidebar-w: clamp(240px, 22vw, 300px);
   --content-w: 1080px;
+  --layout-w: 1440px;
   --topbar-h: 60px;
   --sb-nav-indent: 16px;
   --sb-nav-line-gap: 6px;

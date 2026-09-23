@@ -12,6 +12,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* 始终预留滚动条槽位，避免页面长短不同导致卡片宽度/居中不一致 */
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -89,21 +91,32 @@ ol {
   top: var(--space-4);
 }
 
-/* ---------- 通用布局壳 ---------- */
+/* ---------- 通用布局壳：两张独立卡片 ---------- */
 .layout {
   display: grid;
   grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-4);
+  align-items: start;
+  max-width: var(--layout-w);
+  margin-inline: auto;
   min-height: 100vh;
 }
 .sidebar {
   position: sticky;
-  top: 0;
-  height: 100vh;
+  top: var(--space-4);
+  height: calc(100vh - var(--space-4) * 2);
   overflow-y: auto;
-  border-right: 1px solid var(--line);
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
 }
 .content-col {
   min-width: 0;
+  min-height: calc(100vh - var(--space-4) * 2);
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
 }
 .main {
   width: 100%;
@@ -354,9 +367,17 @@ ol {
 @media (max-width: 767px) {
   .layout {
     grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0;
   }
   .sidebar {
     display: none;
+  }
+  .content-col {
+    background: var(--bg);
+    border: 0;
+    border-radius: 0;
+    min-height: auto;
   }
   .main {
     padding-top: var(--space-6);
