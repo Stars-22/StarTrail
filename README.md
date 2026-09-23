@@ -260,7 +260,7 @@ tech: [TypeScript, React, Vite]      # 可选，技术标签
 repo: owner/repo                     # openSource: true 时必填（owner/repo）
 url: https://example.com             # 可选，在线地址
 openSource: true                     # 必填，开源/私有标识
-cover: /images/xxx.png               # 可选，卡片顶部封面
+cover: /images/xxx.png               # 可选，项目封面（建议 3:2，见下方说明）
 stars: 1204                          # 可选，构建时兜底值（开源项目）
 forks: 156                           # 可选，构建时兜底值
 ---
@@ -271,6 +271,8 @@ forks: 156                           # 可选，构建时兜底值
 校验（`src/content/config.ts`，zod）：`start`/`end` 格式；`end < start` 报错；`openSource: true` 且 `repo` 缺失/格式错报错。列表按 `start` 倒序、进行中置顶。
 
 > `repo` 会被 `scripts/gen-repos.mjs` 汇总为边缘函数的仓库清单（去重、仅取 `openSource && repo`）。
+
+> **封面（`cover`）比例建议**：列表卡片缩略图显示区固定为 **96×64（3:2）**，使用 `object-fit: cover` **居中裁切** —— 图片宽高比不是 **3:2** 时会被裁掉两端（如 2:1 会左右各裁一部分，1:1 会上下各裁一部分）。因此建议封面图使用 **3:2**（例如 `1200×800`、`600×400`）。详情页封面为 `width:100%; max-height:320px; object-fit:cover`，窄或高的图会进一步被纵向裁切；若同时在意详情页，建议用较宽的图。图片建议放在 `public/images/covers/`；PNG / WebP / SVG 可保留透明背景，JPEG 不支持透明。
 
 ## 国际化 i18n
 
