@@ -320,6 +320,10 @@ ol {
 .sidebar .nav {
   padding-left: var(--sb-nav-indent);
 }
+/* 导航比岗位/位置更显著一档 */
+.sidebar .nav a {
+  color: var(--soft);
+}
 /* 激活线左端与上方姓名左端对齐（回退缩进量），横跨缩进空白区 */
 .sidebar .nav a::before {
   left: calc(-1 * var(--sb-nav-indent));

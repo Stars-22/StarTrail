@@ -8,6 +8,7 @@ import Nav from './Nav.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import LangToggle from './LangToggle.astro';
 import PoweredBy from './PoweredBy.astro';
+import Icon from './Icon.astro';
 
 interface Props {
   lang: Lang;
@@ -29,10 +30,11 @@ const copyright = site.copyright[lang].replace('{year}', String(new Date().getFu
       <h1 class="sb-name">{profile.name[lang]}</h1>
       <div class="sb-name-sub mono">{profile.name.en.toUpperCase()}</div>
       <ul class="sb-roles">
-        {profile.roles[lang].map((role) => <li>{role}</li>)}
+        {profile.roles[lang].map((role) => <li class="chip">{role}</li>)}
       </ul>
       <p class="sb-loc">
-        {profile.location[lang]} · <span class="mono">{tzLabel}</span>
+        <Icon name="globe" size={13} />
+        <span>{profile.location[lang]} · <span class="mono">{tzLabel}</span></span>
       </p>
     </div>
 
@@ -98,18 +100,17 @@ const copyright = site.copyright[lang].replace('{year}', String(new Date().getFu
     color: var(--muted);
   }
   .sb-roles {
-    margin-top: var(--space-2);
-  }
-  .sb-roles li {
-    font-size: var(--text-sm);
-    color: var(--muted);
-  }
-  .sb-roles li::before {
-    content: '·  ';
-    color: var(--accent);
+    margin-top: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
   }
   .sb-loc {
     margin-top: var(--space-3);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
     font-size: var(--text-sm);
     color: var(--muted);
   }
