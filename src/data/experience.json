@@ -1,0 +1,55 @@
+[
+  {
+    "company": { "zh": "光年科技", "en": "Lightyear Tech" },
+    "role": { "zh": "高级全栈工程师", "en": "Senior Full-stack Engineer" },
+    "start": "2023-07",
+    "end": null,
+    "location": { "zh": "杭州", "en": "Hangzhou" },
+    "highlights": {
+      "zh": [
+        "负责核心 SaaS 产品的架构演进，主导微前端拆分",
+        "首屏加载从 3.2s 优化到 0.9s",
+        "带领 4 人小组，一半时间写代码，一半时间帮别人写好代码"
+      ],
+      "en": [
+        "Own the architecture evolution of the core SaaS product and led the micro-frontend split",
+        "Cut first paint from 3.2s down to 0.9s",
+        "Leading a team of four — half my time writing code, the other half helping others write it well"
+      ]
+    }
+  },
+  {
+    "company": { "zh": "白鲸网络", "en": "Whale Network" },
+    "role": { "zh": "前端工程师", "en": "Frontend Engineer" },
+    "start": "2021-07",
+    "end": "2023-06",
+    "location": { "zh": "杭州", "en": "Hangzhou" },
+    "highlights": {
+      "zh": [
+        "从零搭建内部设计系统，被 6 条业务线采用",
+        "主导富文本编辑器性能专项，输入延迟降低 60%"
+      ],
+      "en": [
+        "Built the internal design system from scratch, adopted by 6 product lines",
+        "Led the rich-text editor performance push and cut input latency by 60%"
+      ]
+    }
+  },
+  {
+    "company": { "zh": "蓝盒子工作室", "en": "Bluebox Studio" },
+    "role": { "zh": "开发工程师（实习转正）", "en": "Developer (intern → full-time)" },
+    "start": "2020-03",
+    "end": "2021-06",
+    "location": { "zh": "杭州", "en": "Hangzhou" },
+    "highlights": {
+      "zh": [
+        "小程序与 H5 项目从 0 到上线交付",
+        "第一次真切体会到「上线」两个字的分量"
+      ],
+      "en": [
+        "Shipped mini-programs and H5 projects from zero to production",
+        "Learned exactly how much the word \"ship\" weighs"
+      ]
+    }
+  }
+]

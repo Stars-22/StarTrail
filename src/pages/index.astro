@@ -1,0 +1,31 @@
+---
+import site from '../data/site.json';
+import { features } from '../utils/features';
+---
+
+<!doctype html>
+<html lang={site.defaultLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{site.title}</title>
+    {
+      features.i18n && (
+        <script is:inline define:vars={{ defaultLang: site.defaultLang }}>
+          (() => {
+            const stored = localStorage.getItem('st:lang');
+            const lang =
+              stored === 'zh' || stored === 'en'
+                ? stored
+                : navigator.language.toLowerCase().startsWith('zh')
+                  ? 'zh'
+                  : defaultLang;
+            location.replace('/' + lang + '/');
+          })();
+        </script>
+      )
+    }
+    <noscript><meta http-equiv="refresh" content={`0;url=/${site.defaultLang}/`} /></noscript>
+  </head>
+  <body></body>
+</html>

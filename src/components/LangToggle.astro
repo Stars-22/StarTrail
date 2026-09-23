@@ -1,0 +1,57 @@
+---
+import { t, langs, type Lang } from '../utils/i18n';
+
+interface Props {
+  lang: Lang;
+  path: string;
+}
+
+const { lang, path } = Astro.props;
+const available = langs();
+const target: Lang = lang === 'zh' ? 'en' : 'zh';
+
+function swap(next: Lang): string {
+  const parts = path.split('/');
+  if (parts[1] === 'zh' || parts[1] === 'en') parts[1] = next;
+  else parts.splice(1, 0, next);
+  return parts.join('/') || `/${next}/`;
+}
+
+const show = available.length > 1;
+---
+
+{
+  show && (
+    <a
+      class="lang-btn"
+      href={swap(target)}
+      data-lang={target}
+      aria-label={t(lang, 'lang.toggle')}
+      title={target === 'zh' ? t(lang, 'lang.zh') : t(lang, 'lang.en')}
+    >
+      {target === 'zh' ? '中' : 'EN'}
+    </a>
+  )
+}
+
+<style>
+  .lang-btn {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 6px 13px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    color: var(--muted);
+    text-decoration: none;
+    transition:
+      color var(--motion-fast) var(--ease),
+      border-color var(--motion-fast) var(--ease);
+  }
+  .lang-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+</style>

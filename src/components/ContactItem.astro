@@ -1,0 +1,103 @@
+---
+import Icon from './Icon.astro';
+import { t, type Lang } from '../utils/i18n';
+
+interface ContactEntry {
+  type: string;
+  value: string;
+  label?: Record<string, string>;
+}
+
+interface Props {
+  item: ContactEntry;
+  lang: Lang;
+}
+
+const { item, lang } = Astro.props;
+
+const iconByType: Record<string, string> = {
+  github: 'github',
+  netease: 'netease',
+  discord: 'discord',
+  email: 'mail',
+  website: 'globe',
+  leetcode: 'leetcode',
+};
+
+const label = item.label?.[lang] ?? t(lang, `contact.${item.type}`);
+const icon = iconByType[item.type] ?? 'globe';
+const isCopy = item.type === 'discord';
+const isEmail = item.type === 'email';
+const href = isEmail ? `mailto:${item.value}` : item.value;
+const ariaLabel = !isCopy && !isEmail
+  ? `${label} · ${item.value} · ${t(lang, 'about.externalLink')}`
+  : `${label} · ${item.value}`;
+---
+
+{
+  isCopy ? (
+    <button class="contact-item" type="button" data-copy={item.value} aria-label={ariaLabel}>
+      <span class="ci-icon"><Icon name={icon} size={20} /></span>
+      <span class="ci-label">{label}</span>
+      <span class="ci-value mono">{item.value}</span>
+      <span class="ci-action" aria-hidden="true"><Icon name="copy" size={14} /></span>
+    </button>
+  ) : (
+    <a
+      class="contact-item"
+      href={href}
+      target={isEmail ? undefined : '_blank'}
+      rel={isEmail ? undefined : 'noopener noreferrer'}
+      aria-label={ariaLabel}
+    >
+      <span class="ci-icon"><Icon name={icon} size={20} /></span>
+      <span class="ci-label">{label}</span>
+      <span class="ci-value mono">{item.value}</span>
+      <span class="ci-action" aria-hidden="true"><Icon name="external" size={14} /></span>
+    </a>
+  )
+}
+
+<style>
+  .contact-item {
+    display: grid;
+    grid-template-columns: 20px 1fr auto;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    color: inherit;
+    text-decoration: none;
+  }
+  .ci-icon {
+    display: inline-flex;
+    color: var(--muted);
+  }
+  .ci-label {
+    font-size: var(--text-xs);
+    color: var(--muted);
+  }
+  .ci-value {
+    grid-column: 2;
+    font-size: var(--text-sm);
+    transition: color var(--motion-fast) var(--ease);
+  }
+  .ci-action {
+    grid-column: 3;
+    grid-row: 1 / 3;
+    display: inline-flex;
+    color: var(--muted);
+    transition:
+      color var(--motion-fast) var(--ease),
+      transform var(--motion-fast) var(--ease);
+  }
+  .contact-item:hover .ci-value,
+  .contact-item:hover .ci-action {
+    color: var(--accent);
+  }
+  .contact-item:hover .ci-action {
+    transform: translate(3px, -3px);
+  }
+</style>

@@ -1,0 +1,56 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  item: { name: string; icon?: string; badge?: string };
+}
+
+const { item } = Astro.props;
+const icon = item.icon ?? '';
+const isGeneric = icon.startsWith('generic:');
+const genericName = isGeneric ? icon.slice('generic:'.length) : '';
+const brandUrl = !isGeneric && icon ? `https://cdn.simpleicons.org/${icon}/B5451F` : '';
+---
+
+<span class="skill-badge">
+  {
+    isGeneric ? (
+      <span class="sb-ico"><Icon name={genericName} size={14} /></span>
+    ) : brandUrl ? (
+      <img class="sb-img" src={brandUrl} alt="" width="14" height="14" loading="lazy" />
+    ) : (
+      item.badge && <img class="sb-img" src={item.badge} alt="" loading="lazy" />
+    )
+  }
+  <span class="sb-name">{item.name}</span>
+</span>
+
+<style>
+  .skill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--soft);
+    transition:
+      color var(--motion-fast) var(--ease),
+      border-color var(--motion-fast) var(--ease);
+  }
+  .skill-badge:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .sb-ico {
+    display: inline-flex;
+    color: var(--muted);
+  }
+  .sb-img {
+    width: 14px;
+    height: 14px;
+    display: block;
+  }
+</style>

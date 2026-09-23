@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import DefinitionRows from '../../components/DefinitionRows.astro';
+import GitHubStats from '../../components/GitHubStats.astro';
+import ContactList from '../../components/ContactList.astro';
+import profile from '../../data/profile.json';
+import site from '../../data/site.json';
+import { t, langs, type Lang } from '../../utils/i18n';
+import { features } from '../../utils/features';
+import { yearsSince, formatYears } from '../../utils/experience';
+import { utcOffsetLabel } from '../../utils/timezone';
+
+export function getStaticPaths() {
+  return langs().map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const tzLabel = utcOffsetLabel(profile.timezone, lang === 'zh' ? 'UTC' : 'GMT');
+
+const rows = [
+  { label: t(lang, 'about.location'), value: `${profile.location[lang]} · ${tzLabel}` },
+  { label: t(lang, 'about.codingYears'), value: formatYears(yearsSince(profile.started.coding), lang) },
+  { label: t(lang, 'about.workingYears'), value: formatYears(yearsSince(profile.started.working), lang) },
+  { label: t(lang, 'about.roles'), value: profile.roles[lang].join(' · ') },
+  { label: t(lang, 'about.status'), value: profile.status[lang] },
+];
+---
+
+<BaseLayout
+  lang={lang}
+  title={t(lang, 'meta.title.about', { site: site.title })}
+  description={t(lang, 'meta.description.about')}
+  activeNav="about"
+>
+  <SectionHeader title={t(lang, 'pageTitle.about')} subtitle={t(lang, 'pageSubtitle.about')} />
+
+  <div class="prose">
+    {profile.bio[lang].map((paragraph) => <p>{paragraph}</p>)}
+  </div>
+
+  <section class="section">
+    <h2>{t(lang, 'about.currentStatus')}</h2>
+    <DefinitionRows rows={rows} />
+  </section>
+
+  {features.githubStats && <GitHubStats lang={lang} />}
+
+  <section class="section">
+    <h2>{t(lang, 'about.contact')}</h2>
+    <ContactList lang={lang} />
+  </section>
+</BaseLayout>

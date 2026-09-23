@@ -1,0 +1,34 @@
+---
+import { t, type Lang } from '../utils/i18n';
+import { features, hasExperiencePage } from '../utils/features';
+
+interface Props {
+  lang: Lang;
+  activeNav: string;
+  class?: string;
+}
+
+const { lang, activeNav, class: className = 'nav' } = Astro.props;
+
+const items = [
+  { key: 'about', href: `/${lang}/`, show: true },
+  { key: 'now', href: `/${lang}/now`, show: features.now },
+  { key: 'projects', href: `/${lang}/projects`, show: true },
+  { key: 'experience', href: `/${lang}/experience`, show: hasExperiencePage },
+  { key: 'recommendations', href: `/${lang}/recommendations`, show: features.recommendations },
+].filter((item) => item.show);
+---
+
+<nav class={className} aria-label={t(lang, 'nav.ariaLabel')}>
+  {
+    items.map((item) => (
+      <a
+        href={item.href}
+        class={item.key === activeNav ? 'is-active' : ''}
+        aria-current={item.key === activeNav ? 'page' : undefined}
+      >
+        {t(lang, `nav.${item.key}`)}
+      </a>
+    ))
+  }
+</nav>

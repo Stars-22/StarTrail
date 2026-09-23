@@ -1,0 +1,90 @@
+/* ============================================================
+   StarTrail · 设计 tokens
+   基调：暖纸色、陶土红点缀、Fraunces 衬线标题。
+   ============================================================ */
+
+:root {
+  color-scheme: light;
+
+  /* 色板 —— 浅色（暖纸） */
+  --bg: #F5F3EC;
+  --bg2: #FCFBF7;
+  --surface: #FCFBF7;
+  --fg: #1D1B16;
+  --ink: #1D1B16;
+  --soft: #5F5B4F;
+  --muted: #8B8678;
+  --line: #E5E1D5;
+  --line-strong: #D8D3C4;
+  --accent: #B5451F;
+  --accent-strong: #93411C;
+  --accent-fg: #FCFBF7;
+
+  /* 字体（Google Fonts，见 BaseLayout） */
+  --font-serif: 'Fraunces', 'Noto Serif SC', 'Songti SC', Georgia, serif;
+  --font-sans: 'Noto Sans SC', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
+
+  /* 字号阶梯 */
+  --text-xs: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.96875rem;
+  --text-md: 1.25rem;
+  --text-lg: clamp(2.1rem, 4.4vw, 3.1rem);
+  --text-name: 1.6875rem;
+
+  /* 行高 */
+  --leading-tight: 1.12;
+  --leading-normal: 1.75;
+
+  /* 间距阶梯 */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* 圆角 */
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+
+  /* 布局 */
+  --bp: 768px;
+  --sidebar-w: clamp(240px, 22vw, 300px);
+  --content-w: 1080px;
+  --topbar-h: 60px;
+  --sb-nav-indent: 16px;
+  --sb-nav-line-gap: 6px;
+
+  /* 层级 */
+  --z-drawer: 50;
+  --z-skip: 100;
+
+  /* 动效 */
+  --motion-fast: 200ms;
+  --motion-base: 300ms;
+  --motion-slow: 500ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* 色板 —— 暗色（暖灰） */
+  --bg: #2A2723;
+  --bg2: #322E28;
+  --surface: #322E28;
+  --fg: #EAE3D6;
+  --ink: #EAE3D6;
+  --soft: #C4BCAE;
+  --muted: #A19485;
+  --line: #3A352E;
+  --line-strong: #4A443B;
+  --accent: #D8764F;
+  --accent-strong: #E8936C;
+  --accent-fg: #241E18;
+}

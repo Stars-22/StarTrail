@@ -1,0 +1,85 @@
+---
+import { t, type Lang } from '../utils/i18n';
+
+interface Job {
+  company: Record<string, string>;
+  role: Record<string, string>;
+  start: string;
+  end: string | null;
+  location?: Record<string, string>;
+  highlights: Record<string, string[]>;
+}
+
+interface Props {
+  item: Job;
+  lang: Lang;
+}
+
+const { item, lang } = Astro.props;
+const time = `${item.start} – ${item.end ?? t(lang, 'experience.present')}`;
+---
+
+<article class="tl-item">
+  <div class="tl-time mono">{time}</div>
+  <h3 class="tl-role">{item.role[lang]}</h3>
+  <div class="tl-org">
+    {item.company[lang]}{item.location && ` · ${item.location[lang]}`}
+  </div>
+  <ul class="tl-desc">
+    {item.highlights[lang].map((line) => <li>{line}</li>)}
+  </ul>
+</article>
+
+<style>
+  .tl-item {
+    position: relative;
+    padding-bottom: 38px;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -32.5px;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-circle);
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--bg);
+  }
+  .tl-item:last-child {
+    padding-bottom: 6px;
+  }
+  .tl-time {
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+  .tl-role {
+    margin-top: 7px;
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: var(--leading-tight);
+  }
+  .tl-org {
+    margin-top: 3px;
+    font-size: 13px;
+    color: var(--soft);
+  }
+  .tl-desc {
+    margin-top: 11px;
+    max-width: 62ch;
+  }
+  .tl-desc li {
+    position: relative;
+    padding-left: 1.1em;
+    font-size: 14.5px;
+    color: var(--soft);
+    line-height: 1.95;
+  }
+  .tl-desc li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+  }
+</style>

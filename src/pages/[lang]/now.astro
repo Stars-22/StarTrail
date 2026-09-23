@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import NowItem from '../../components/NowItem.astro';
+import now from '../../data/now.json';
+import site from '../../data/site.json';
+import { t, langs, type Lang } from '../../utils/i18n';
+import { features } from '../../utils/features';
+
+export function getStaticPaths() {
+  if (!features.now) return [];
+  return langs().map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+---
+
+<BaseLayout
+  lang={lang}
+  title={t(lang, 'meta.title.now', { site: site.title })}
+  description={t(lang, 'meta.description.now')}
+  activeNav="now"
+>
+  <SectionHeader title={t(lang, 'pageTitle.now')} subtitle={t(lang, 'pageSubtitle.now')} />
+  <div class="now-list">
+    {now.map((item) => <NowItem item={item} lang={lang} />)}
+  </div>
+</BaseLayout>
+
+<style>
+  .now-list {
+    margin-top: var(--space-4);
+  }
+</style>

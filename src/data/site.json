@@ -1,0 +1,23 @@
+{
+  "title": "StarTrail",
+  "url": "https://startrail.example.com",
+  "defaultLang": "en",
+  "githubUser": "Stars-22",
+  "repoUrl": "https://github.com/Stars-22/StarTrail",
+  "poweredBy": { "zh": "由 Astro 驱动", "en": "Powered by Astro" },
+  "githubStats": {
+    "provider": "https://dev-stats.mintimate.cn",
+    "cards": ["stats", "topLangs", "badges"]
+  },
+  "features": {
+    "i18n": true,
+    "theme": true,
+    "now": true,
+    "skills": true,
+    "experience": true,
+    "awards": true,
+    "recommendations": true,
+    "githubStats": true,
+    "starAutoUpdate": true
+  }
+}

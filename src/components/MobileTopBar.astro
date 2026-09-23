@@ -1,0 +1,100 @@
+---
+import profile from '../data/profile.json';
+import { t, type Lang } from '../utils/i18n';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<header class="topbar">
+  <div class="tb-id">
+    <img class="m-avatar" src={profile.avatar} alt="" width="36" height="36" />
+    <div class="tb-text">
+      <span class="tb-name">{profile.name[lang]}</span>
+      <span class="tb-role">{profile.roles[lang].join(' · ')}</span>
+    </div>
+  </div>
+  <button
+    class="menu-btn"
+    type="button"
+    id="menu-btn"
+    aria-expanded="false"
+    aria-controls="drawer"
+    aria-label={t(lang, 'nav.menu')}
+  >
+    <Icon name="menu" size={18} />
+  </button>
+</header>
+
+<style>
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    height: var(--topbar-h);
+    padding: 0 18px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  .tb-id {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-width: 0;
+  }
+  .m-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-circle);
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .tb-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .tb-name {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.15;
+  }
+  .tb-role {
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .menu-btn {
+    display: inline-grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-circle);
+    color: var(--ink);
+    flex-shrink: 0;
+    transition:
+      color var(--motion-fast) var(--ease),
+      border-color var(--motion-fast) var(--ease);
+  }
+  .menu-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  @media (max-width: 767px) {
+    .topbar {
+      display: flex;
+    }
+  }
+</style>

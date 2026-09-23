@@ -1,0 +1,52 @@
+---
+import Icon from './Icon.astro';
+import { t, type Lang } from '../utils/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<button
+  class="theme-toggle"
+  type="button"
+  data-theme-toggle
+  aria-label={t(lang, 'theme.toggle')}
+  title={t(lang, 'theme.toggle')}
+>
+  <span class="icon icon-moon"><Icon name="moon" size={18} /></span>
+  <span class="icon icon-sun"><Icon name="sun" size={18} /></span>
+</button>
+
+<style>
+  .theme-toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-circle);
+    color: var(--muted);
+    transition:
+      color var(--motion-fast) var(--ease),
+      border-color var(--motion-fast) var(--ease);
+  }
+  .theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .icon {
+    display: inline-flex;
+  }
+  .icon-sun {
+    display: none;
+  }
+  :global(html[data-theme='dark']) .icon-sun {
+    display: inline-flex;
+  }
+  :global(html[data-theme='dark']) .icon-moon {
+    display: none;
+  }
+</style>

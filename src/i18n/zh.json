@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "title": {
+      "about": "关于 · {site}",
+      "now": "近况 · {site}",
+      "projects": "项目 · {site}",
+      "projectDetail": "{project} · {site}",
+      "experience": "经历 · {site}",
+      "recommendations": "推荐 · {site}"
+    },
+    "description": {
+      "about": "个人介绍、当前状态与联系方式。",
+      "now": "正在学习和进行中的事。",
+      "projects": "做过与正在做的项目。",
+      "projectDetail": "{description}",
+      "experience": "技能、工作经历与奖项证书。",
+      "recommendations": "用过的、看过的、玩过的推荐。"
+    }
+  },
+  "nav": {
+    "about": "关于",
+    "now": "近况",
+    "projects": "项目",
+    "experience": "经历",
+    "recommendations": "推荐",
+    "ariaLabel": "主导航",
+    "skipToContent": "跳到主要内容",
+    "menu": "菜单",
+    "close": "关闭"
+  },
+  "pageTitle": {
+    "about": "关于",
+    "now": "近况",
+    "projects": "项目",
+    "experience": "经历",
+    "recommendations": "推荐"
+  },
+  "pageSubtitle": {
+    "about": "你好，陌生人。",
+    "now": "记录此刻，而非曾经。",
+    "projects": "做过与正在做的作品。",
+    "experience": "技能、履历与一纸证书。",
+    "recommendations": "用过、看过、玩过，都值得。"
+  },
+  "about": {
+    "currentStatus": "当前状态",
+    "location": "位置",
+    "codingYears": "编程经验",
+    "workingYears": "工作经验",
+    "roles": "岗位",
+    "status": "状态",
+    "years": "{count} 年",
+    "yearsUnderOne": "不足一年",
+    "githubStats": "GitHub 统计",
+    "statsOverview": "统计总览",
+    "statsLangs": "常用语言",
+    "statsActivity": "贡献曲线",
+    "statsBadges": "徽章",
+    "contact": "联系方式",
+    "externalLink": "在新标签页打开",
+    "copy": "复制",
+    "copySuccess": "复制成功",
+    "copyFailed": "复制失败"
+  },
+  "contact": {
+    "github": "GitHub",
+    "netease": "网易云音乐",
+    "discord": "Discord",
+    "email": "邮箱",
+    "website": "个人网站",
+    "leetcode": "力扣"
+  },
+  "now": {
+    "startedAt": "开始于"
+  },
+  "projects": {
+    "openSource": "开源",
+    "private": "私有",
+    "ongoing": "进行中",
+    "starsLabel": "Star",
+    "forksLabel": "Fork",
+    "viewDetail": "查看详情",
+    "visitOnline": "访问在线地址",
+    "viewSource": "查看源码",
+    "startLabel": "开始",
+    "endLabel": "结束",
+    "techLabel": "技术栈"
+  },
+  "experience": {
+    "skills": "技能",
+    "work": "工作经历",
+    "awards": "奖项证书",
+    "present": "至今"
+  },
+  "recommendations": {
+    "all": "全部",
+    "filter": "按标签筛选",
+    "rating": "评分",
+    "visit": "访问",
+    "empty": "没有符合筛选的推荐。"
+  },
+  "theme": {
+    "toggle": "切换主题",
+    "toLight": "切换到浅色",
+    "toDark": "切换到暗色"
+  },
+  "lang": {
+    "toggle": "切换语言",
+    "zh": "中文",
+    "en": "English"
+  },
+  "footer": {
+    "viewSource": "查看源码"
+  },
+  "error": {
+    "title": "页面不存在",
+    "description": "你访问的页面不存在或已被移动。",
+    "backHome": "返回首页"
+  }
+}

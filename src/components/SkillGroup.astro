@@ -1,0 +1,41 @@
+---
+import SkillBadge from './SkillBadge.astro';
+import type { Lang } from '../utils/i18n';
+
+interface Props {
+  group: {
+    id: string;
+    name: Record<string, string>;
+    items: { name: string; icon?: string; badge?: string }[];
+  };
+  lang: Lang;
+}
+
+const { group, lang } = Astro.props;
+---
+
+<section class="skill-group">
+  <h3 class="sg-name">{group.name[lang]}</h3>
+  <div class="sg-badges">
+    {group.items.map((item) => <SkillBadge item={item} />)}
+  </div>
+</section>
+
+<style>
+  .skill-group + .skill-group {
+    margin-top: var(--space-6);
+  }
+  .sg-name {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: var(--space-2);
+  }
+  .sg-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+</style>

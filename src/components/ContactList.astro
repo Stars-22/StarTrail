@@ -1,0 +1,28 @@
+---
+import ContactItem from './ContactItem.astro';
+import contacts from '../data/contact.json';
+import type { Lang } from '../utils/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<div class="contact-list">
+  {contacts.map((item) => <ContactItem item={item} lang={lang} />)}
+</div>
+
+<style>
+  .contact-list {
+    margin-top: var(--space-4);
+  }
+  @media (min-width: 640px) {
+    .contact-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: var(--space-6);
+    }
+  }
+</style>

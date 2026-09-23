@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import TagFilter from '../../components/TagFilter.astro';
+import RecommendationItem from '../../components/RecommendationItem.astro';
+import recommendations from '../../data/recommendations.json';
+import site from '../../data/site.json';
+import { t, langs, type Lang } from '../../utils/i18n';
+import { features } from '../../utils/features';
+
+export function getStaticPaths() {
+  if (!features.recommendations) return [];
+  return langs().map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+
+const tagNameById: Record<string, Record<string, string>> = {};
+for (const group of recommendations.tagGroups) {
+  for (const tag of group.tags) tagNameById[tag.id] = tag.name;
+}
+---
+
+<BaseLayout
+  lang={lang}
+  title={t(lang, 'meta.title.recommendations', { site: site.title })}
+  description={t(lang, 'meta.description.recommendations')}
+  activeNav="recommendations"
+>
+  <SectionHeader
+    title={t(lang, 'pageTitle.recommendations')}
+    subtitle={t(lang, 'pageSubtitle.recommendations')}
+  />
+
+  <TagFilter tagGroups={recommendations.tagGroups} lang={lang} />
+
+  <div class="rec-list">
+    {
+      recommendations.items.map((item) => (
+        <RecommendationItem item={item} lang={lang} tagNameById={tagNameById} />
+      ))
+    }
+  </div>
+  <p class="rec-empty" hidden>{t(lang, 'recommendations.empty')}</p>
+</BaseLayout>
+
+<style>
+  .rec-list {
+    margin-top: var(--space-5);
+  }
+  .rec-empty {
+    margin-top: var(--space-5);
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+</style>

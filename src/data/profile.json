@@ -1,0 +1,24 @@
+{
+  "name": { "zh": "陈默", "en": "Chen Mo" },
+  "avatar": "/images/avatar.svg",
+  "roles": {
+    "zh": ["全栈开发工程师", "前端工程师", "Node.js 后端工程师", "独立开发者"],
+    "en": ["Full-stack Developer", "Frontend Engineer", "Node.js Backend Engineer", "Indie Developer"]
+  },
+  "location": { "zh": "杭州 / 中国", "en": "Hangzhou / China" },
+  "timezone": "Asia/Shanghai",
+  "status": { "zh": "在职，开放合作", "en": "Employed, open to collaboration" },
+  "started": { "coding": "2019-09", "working": "2020-03" },
+  "bio": {
+    "zh": [
+      "你好，我是陈默，一名在杭州写代码第六年的全栈工程师。我相信好的软件是「删」出来的——把不必要的复杂度一层层削掉，剩下的才是产品本身。",
+      "白天我用 TypeScript 和 Go 搭服务，晚上维护几个开源小项目。我对编辑器、开发者工具和「小而确定」的软件有执念：一个工具如果能小于 100kb 还让人惊艳，那它就值得存在。",
+      "不写代码的时候，我在学英语、拍照，以及给朋友安利各种奇奇怪怪的好东西——「推荐」那页就是罪证。"
+    ],
+    "en": [
+      "Hi, I'm Chen Mo, a full-stack engineer in Hangzhou, six years into writing code. I believe good software is made by deletion — strip away layer after layer of unnecessary complexity, and what remains is the product.",
+      "By day I build services with TypeScript and Go; by night I maintain a few small open-source projects. I have a soft spot for editors, dev tools and \"small but certain\" software: if a tool can stay under 100kb and still delight, it deserves to exist.",
+      "When I'm not coding, I'm learning English, taking photos, and pushing oddly specific recommendations onto friends — the Recommendations page is the evidence."
+    ]
+  }
+}

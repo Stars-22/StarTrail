@@ -1,0 +1,71 @@
+---
+import Icon from './Icon.astro';
+import type { Lang } from '../utils/i18n';
+
+interface Award {
+  title: Record<string, string>;
+  issuer?: Record<string, string>;
+  year: number;
+  url?: string;
+}
+
+interface Props {
+  item: Award;
+  lang: Lang;
+}
+
+const { item, lang } = Astro.props;
+---
+
+<div class="award-item">
+  <span class="award-year mono">{item.year}</span>
+  <p class="award-title">
+    <span>{item.title[lang]}</span>
+    {item.issuer && <span class="award-issuer"> · {item.issuer[lang]}</span>}
+    {
+      item.url && (
+        <a
+          class="award-link"
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={item.title[lang]}
+        >
+          <Icon name="external" size={12} />
+        </a>
+      )
+    }
+  </p>
+</div>
+
+<style>
+  .award-item {
+    display: flex;
+    gap: 24px;
+    align-items: baseline;
+    padding: 15px 2px;
+    border-bottom: 1px solid var(--line);
+  }
+  .award-year {
+    flex-shrink: 0;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+  }
+  .award-title {
+    font-size: 15px;
+  }
+  .award-issuer {
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+  .award-link {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-left: var(--space-2);
+    color: var(--muted);
+  }
+  .award-link:hover {
+    color: var(--accent);
+  }
+</style>

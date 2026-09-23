@@ -1,0 +1,29 @@
+[
+  {
+    "name": { "zh": "学英语", "en": "Learning English" },
+    "tags": { "zh": ["语言", "日常"], "en": ["Language", "Daily"] },
+    "description": {
+      "zh": "每天 30 分钟 Anki + 一集《老友记》跟读。目标：明年裸看美剧不盯字幕，顺便把六级过了。",
+      "en": "30 minutes of Anki plus one episode of Friends with shadowing, every single day. Goal: watch shows without subtitles by next year — and pass CET-6 along the way."
+    },
+    "startedAt": "2025-09"
+  },
+  {
+    "name": { "zh": "维护 nova-ui", "en": "Maintaining nova-ui" },
+    "tags": { "zh": ["开源", "长期"], "en": ["Open source", "Ongoing"] },
+    "description": {
+      "zh": "回复 issue、review PR、写文档。开源最难的不是写代码，是持续在场。",
+      "en": "Answering issues, reviewing PRs, writing docs. The hardest part of open source is showing up, not writing code."
+    },
+    "startedAt": "2023-02"
+  },
+  {
+    "name": { "zh": "重读《DDIA》", "en": "Re-reading DDIA" },
+    "tags": { "zh": ["阅读", "每周一章"], "en": ["Reading", "1 ch / week"] },
+    "description": {
+      "zh": "《数据密集型应用系统设计》。第一遍囫囵吞枣，这一遍老老实实做笔记。",
+      "en": "Designing Data-Intensive Applications. The first pass was a blur; this time I take notes properly."
+    },
+    "startedAt": "2026-06"
+  }
+]

@@ -1,0 +1,307 @@
+---
+import '../styles/tokens.css';
+import '../styles/global.css';
+import site from '../data/site.json';
+import { t, type Lang } from '../utils/i18n';
+import { features } from '../utils/features';
+import Sidebar from '../components/Sidebar.astro';
+import MobileTopBar from '../components/MobileTopBar.astro';
+import MobileDrawer from '../components/MobileDrawer.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  activeNav: string;
+}
+
+const { lang, title, description, activeNav } = Astro.props;
+
+const base = Astro.site ?? new URL(site.url);
+const pathname = Astro.url.pathname;
+const canonical = new URL(pathname, base).href;
+
+function altLink(target: Lang): string {
+  const parts = pathname.split('/');
+  if (parts[1] === 'zh' || parts[1] === 'en') parts[1] = target;
+  else parts.splice(1, 0, target);
+  return new URL(parts.join('/'), base).href;
+}
+---
+
+<!doctype html>
+<html lang={lang} data-theme={features.theme ? undefined : 'light'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23B5451F'/%3E%3Ctext x='50' y='70' font-size='54' text-anchor='middle' fill='%23F5F3EC' font-family='Georgia'%3E%E9%BB%98%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:site_name" content={site.title} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={lang === 'zh' ? 'zh_CN' : 'en_US'} />
+    {
+      features.i18n && (
+        <>
+          <link rel="alternate" hreflang="zh" href={altLink('zh')} />
+          <link rel="alternate" hreflang="en" href={altLink('en')} />
+        </>
+      )
+    }
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    {
+      features.theme && (
+        <script is:inline>
+          (() => {
+            const stored = localStorage.getItem('st:theme');
+            const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.dataset.theme =
+              stored === 'light' || stored === 'dark' ? stored : dark ? 'dark' : 'light';
+          })();
+        </script>
+      )
+    }
+  </head>
+  <body
+    data-star-auto-update={features.starAutoUpdate ? 'true' : 'false'}
+    data-copy-success={t(lang, 'about.copySuccess')}
+    data-copy-failed={t(lang, 'about.copyFailed')}
+  >
+    <a class="skip-link" href="#content">{t(lang, 'nav.skipToContent')}</a>
+
+    <div class="layout">
+      <Sidebar lang={lang} activeNav={activeNav} path={pathname} />
+      <div class="content-col">
+        <MobileTopBar lang={lang} />
+        <main id="content" class="main page-enter">
+          <slot />
+          <SiteFooter lang={lang} />
+        </main>
+      </div>
+    </div>
+
+    <MobileDrawer lang={lang} activeNav={activeNav} path={pathname} />
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ---------- 滚动渐显 ---------- */
+      const revealEls = document.querySelectorAll<HTMLElement>('[data-reveal]');
+      if (!('IntersectionObserver' in window) || prefersReduced) {
+        revealEls.forEach((el) => el.classList.add('is-visible'));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                (entry.target as HTMLElement).classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.06 },
+        );
+        revealEls.forEach((el) => io.observe(el));
+      }
+
+      /* ---------- 统计卡主题同步（浅/暗单图切换） ---------- */
+      function syncStatCards() {
+        const dark = document.documentElement.dataset.theme === 'dark';
+        document.querySelectorAll<HTMLImageElement>('img[data-light][data-dark]').forEach((img) => {
+          const next = (dark ? img.dataset.dark : img.dataset.light) ?? '';
+          if (next && img.getAttribute('src') !== next) img.setAttribute('src', next);
+        });
+      }
+      syncStatCards();
+
+      /* ---------- 主题切换 ---------- */
+      document.querySelectorAll<HTMLElement>('[data-theme-toggle]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const root = document.documentElement;
+          const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+          root.dataset.theme = next;
+          try {
+            localStorage.setItem('st:theme', next);
+          } catch {}
+          syncStatCards();
+        });
+      });
+
+      /* ---------- 语言切换（写存储，跳转交给 <a>） ---------- */
+      document.querySelectorAll<HTMLAnchorElement>('.lang-btn').forEach((link) => {
+        link.addEventListener('click', () => {
+          try {
+            localStorage.setItem('st:lang', link.dataset.lang ?? '');
+          } catch {}
+        });
+      });
+
+      /* ---------- 抽屉 ---------- */
+      const drawer = document.getElementById('drawer');
+      const menuBtn = document.getElementById('menu-btn');
+      const closeBtn = document.getElementById('drawer-close');
+      let lastFocus: HTMLElement | null = null;
+
+      function openDrawer() {
+        if (!drawer) return;
+        lastFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+        drawer.hidden = false;
+        requestAnimationFrame(() => drawer.classList.add('is-open'));
+        menuBtn?.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+        drawer.querySelector<HTMLElement>('a, button')?.focus();
+      }
+      function closeDrawer() {
+        if (!drawer || drawer.hidden) return;
+        drawer.classList.remove('is-open');
+        menuBtn?.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        if (prefersReduced) drawer.hidden = true;
+        else setTimeout(() => (drawer.hidden = true), 420);
+        lastFocus?.focus();
+      }
+      menuBtn?.addEventListener('click', openDrawer);
+      closeBtn?.addEventListener('click', closeDrawer);
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeDrawer();
+      });
+      drawer?.addEventListener('keydown', (event) => {
+        if (event.key !== 'Tab') return;
+        const focusables = drawer.querySelectorAll<HTMLElement>('a[href], button:not([disabled])');
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+      drawer?.querySelectorAll('.nav a').forEach((link) => link.addEventListener('click', closeDrawer));
+
+      /* ---------- 推荐标签筛选（渐进增强） ---------- */
+      const filterBtns = document.querySelectorAll<HTMLElement>('.filter-btn');
+      const recItems = document.querySelectorAll<HTMLElement>('.rec-item');
+      const recEmpty = document.querySelector<HTMLElement>('.rec-empty');
+
+      function applyFilter(value: string) {
+        let visible = 0;
+        recItems.forEach((el) => {
+          const tags = (el.dataset.tags || '').split(' ').filter(Boolean);
+          const show = value === 'all' || tags.includes(value);
+          el.hidden = !show;
+          if (show) visible += 1;
+        });
+        filterBtns.forEach((btn) => {
+          const on = btn.dataset.filter === value;
+          btn.classList.toggle('is-active', on);
+          btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        if (recEmpty) recEmpty.hidden = visible !== 0;
+      }
+      filterBtns.forEach((btn) =>
+        btn.addEventListener('click', () => applyFilter(btn.dataset.filter ?? 'all')),
+      );
+      if (recEmpty) recEmpty.hidden = true;
+
+      /* ---------- 复制到剪贴板 ---------- */
+      const toast = document.getElementById('toast');
+      const copySuccess = document.body.dataset.copySuccess || 'Copied';
+      const copyFailed = document.body.dataset.copyFailed || 'Copy failed';
+      let toastTimer: ReturnType<typeof setTimeout> | undefined;
+
+      function notify(message: string) {
+        if (!toast) return;
+        toast.textContent = message;
+        toast.classList.add('is-visible');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2200);
+      }
+
+      function fallbackCopy(value: string, done: () => void, fail: () => void) {
+        const area = document.createElement('textarea');
+        area.value = value;
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.appendChild(area);
+        area.select();
+        let ok = false;
+        try {
+          ok = document.execCommand('copy');
+        } catch {
+          ok = false;
+        }
+        area.remove();
+        if (ok) done();
+        else fail();
+      }
+      document.addEventListener('click', (event) => {
+        const target =
+          event.target instanceof Element
+            ? (event.target.closest('[data-copy]') as HTMLElement | null)
+            : null;
+        if (!target) return;
+        const value = target.dataset.copy ?? '';
+        const done = () => notify(copySuccess);
+        const fail = () => notify(copyFailed);
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(value).then(done).catch(() => fallbackCopy(value, done, fail));
+        } else {
+          fallbackCopy(value, done, fail);
+        }
+      });
+
+      /* ---------- Star/Fork 实时刷新（§6.6） ---------- */
+      type StarsPayload = {
+        repos?: Record<string, { stars: number; forks: number }>;
+      };
+
+      function fmtNum(value: number | null | undefined) {
+        return value == null
+          ? '–'
+          : value >= 1000
+            ? `${(value / 1000).toFixed(1).replace(/\.0$/, '')}k`
+            : String(value);
+      }
+      function applyStars(data: StarsPayload) {
+        if (!data.repos) return;
+        document.querySelectorAll<HTMLElement>('[data-repo]').forEach((el) => {
+          const info = el.dataset.repo ? data.repos?.[el.dataset.repo] : undefined;
+          if (!info) return;
+          const stars = el.querySelector<HTMLElement>('[data-stars]');
+          const forks = el.querySelector<HTMLElement>('[data-forks]');
+          if (stars) stars.textContent = fmtNum(info.stars);
+          if (forks) forks.textContent = fmtNum(info.forks);
+        });
+      }
+
+      const starAutoUpdate = document.body.dataset.starAutoUpdate === 'true';
+      if (starAutoUpdate && document.querySelector('[data-repo]')) {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 3000);
+        fetch('/api/stars', { signal: controller.signal })
+          .then((res) => (res.ok ? res.json() : null))
+          .then((data: StarsPayload | null) => data && applyStars(data))
+          .catch(() => {})
+          .finally(() => clearTimeout(timer));
+      }
+    </script>
+  </body>
+</html>

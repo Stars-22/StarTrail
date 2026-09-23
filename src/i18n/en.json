@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "title": {
+      "about": "About · {site}",
+      "now": "Now · {site}",
+      "projects": "Projects · {site}",
+      "projectDetail": "{project} · {site}",
+      "experience": "Experience · {site}",
+      "recommendations": "Recommendations · {site}"
+    },
+    "description": {
+      "about": "Introduction, current status, and how to reach me.",
+      "now": "What I'm learning and working on right now.",
+      "projects": "Projects built and being built.",
+      "projectDetail": "{description}",
+      "experience": "Skills, work experience, and awards.",
+      "recommendations": "Things used, watched, and played — recommended."
+    }
+  },
+  "nav": {
+    "about": "About",
+    "now": "Now",
+    "projects": "Projects",
+    "experience": "Experience",
+    "recommendations": "Recommendations",
+    "ariaLabel": "Main navigation",
+    "skipToContent": "Skip to main content",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "pageTitle": {
+    "about": "About",
+    "now": "Now",
+    "projects": "Projects",
+    "experience": "Experience",
+    "recommendations": "Recommendations"
+  },
+  "pageSubtitle": {
+    "about": "Hello, stranger.",
+    "now": "Documenting now, not then.",
+    "projects": "Things built and being built.",
+    "experience": "Skills, career, and a certificate.",
+    "recommendations": "Used, watched, played — all worth sharing."
+  },
+  "about": {
+    "currentStatus": "Current status",
+    "location": "Location",
+    "codingYears": "Coding experience",
+    "workingYears": "Work experience",
+    "roles": "Roles",
+    "status": "Status",
+    "years": "{count} yrs",
+    "yearsUnderOne": "less than a year",
+    "githubStats": "GitHub stats",
+    "statsOverview": "Overview",
+    "statsLangs": "Top languages",
+    "statsActivity": "Activity",
+    "statsBadges": "Badges",
+    "contact": "Contact",
+    "externalLink": "Opens in a new tab",
+    "copy": "Copy",
+    "copySuccess": "Copied",
+    "copyFailed": "Copy failed"
+  },
+  "contact": {
+    "github": "GitHub",
+    "netease": "NetEase Music",
+    "discord": "Discord",
+    "email": "Email",
+    "website": "Website",
+    "leetcode": "LeetCode"
+  },
+  "now": {
+    "startedAt": "Started"
+  },
+  "projects": {
+    "openSource": "Open source",
+    "private": "Private",
+    "ongoing": "Ongoing",
+    "starsLabel": "Stars",
+    "forksLabel": "Forks",
+    "viewDetail": "View details",
+    "visitOnline": "Visit site",
+    "viewSource": "View source",
+    "startLabel": "Started",
+    "endLabel": "Ended",
+    "techLabel": "Tech stack"
+  },
+  "experience": {
+    "skills": "Skills",
+    "work": "Work experience",
+    "awards": "Awards & certificates",
+    "present": "Present"
+  },
+  "recommendations": {
+    "all": "All",
+    "filter": "Filter by tag",
+    "rating": "Rating",
+    "visit": "Visit",
+    "empty": "No matches for this filter."
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "toLight": "Switch to light",
+    "toDark": "Switch to dark"
+  },
+  "lang": {
+    "toggle": "Switch language",
+    "zh": "Chinese",
+    "en": "English"
+  },
+  "footer": {
+    "viewSource": "View source"
+  },
+  "error": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has moved.",
+    "backHome": "Back to home"
+  }
+}

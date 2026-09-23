@@ -1,0 +1,138 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import DefinitionRows from '../../../components/DefinitionRows.astro';
+import Icon from '../../../components/Icon.astro';
+import site from '../../../data/site.json';
+import { t, langs, type Lang } from '../../../utils/i18n';
+import { localizedProjects, type ProjectEntry } from '../../../utils/projects';
+
+export async function getStaticPaths() {
+  const paths: Array<{
+    params: { lang: Lang; slug: string };
+    props: { entry: ProjectEntry; base: string };
+  }> = [];
+  for (const lang of langs()) {
+    const projects = await localizedProjects(lang);
+    for (const project of projects) {
+      paths.push({ params: { lang, slug: project.base }, props: { entry: project.entry, base: project.base } });
+    }
+  }
+  return paths;
+}
+
+const { entry } = Astro.props as { entry: ProjectEntry; base: string };
+const lang = Astro.params.lang as Lang;
+const data = entry.data;
+const { Content } = await render(entry);
+
+const metaRows = [
+  { label: t(lang, 'projects.startLabel'), value: data.start },
+  { label: t(lang, 'projects.endLabel'), value: data.end ?? t(lang, 'experience.present') },
+  { label: t(lang, 'projects.techLabel'), value: data.tech.join(' · ') || '–' },
+];
+---
+
+<BaseLayout
+  lang={lang}
+  title={t(lang, 'meta.title.projectDetail', { project: data.title, site: site.title })}
+  description={t(lang, 'meta.description.projectDetail', { description: data.description })}
+  activeNav="projects"
+>
+  <a class="back" href={`/${lang}/projects`}>
+    <Icon name="back" size={14} />
+    {t(lang, 'nav.projects')}
+  </a>
+
+  <h1 class="project-title">{data.title}</h1>
+  <p class="project-desc">{data.description}</p>
+
+  <DefinitionRows rows={metaRows} />
+
+  <div class="actions">
+    {
+      data.url && (
+        <a class="action" href={data.url} target="_blank" rel="noopener noreferrer">
+          {t(lang, 'projects.visitOnline')}
+          <Icon name="external" size={14} />
+        </a>
+      )
+    }
+    {
+      data.repo && (
+        <a class="action" href={`https://github.com/${data.repo}`} target="_blank" rel="noopener noreferrer">
+          {t(lang, 'projects.viewSource')}
+          <Icon name="external" size={14} />
+        </a>
+      )
+    }
+  </div>
+
+  {data.cover && <img class="cover" src={data.cover} alt={data.title} loading="lazy" />}
+
+  <div class="prose project-body">
+    <Content />
+  </div>
+</BaseLayout>
+
+<style>
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-decoration: none;
+    margin-bottom: var(--space-5);
+    transition: color var(--motion-fast) var(--ease);
+  }
+  .back:hover {
+    color: var(--accent);
+  }
+  .project-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    line-height: 1.05;
+  }
+  .project-desc {
+    margin-top: var(--space-3);
+    max-width: 68ch;
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-5);
+  }
+  .action {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-5);
+    border: 1px solid var(--line);
+    font-size: var(--text-sm);
+    text-decoration: none;
+    transition:
+      color var(--motion-fast) var(--ease),
+      border-color var(--motion-fast) var(--ease);
+  }
+  .action:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .cover {
+    width: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    border: 1px solid var(--line);
+    margin-top: var(--space-6);
+  }
+  .project-body {
+    margin-top: var(--space-6);
+  }
+</style>

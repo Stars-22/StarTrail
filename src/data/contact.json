@@ -1,0 +1,8 @@
+[
+  { "type": "github", "value": "https://github.com/chenmo-dev" },
+  { "type": "netease", "value": "https://music.163.com" },
+  { "type": "discord", "value": "chenmo" },
+  { "type": "email", "value": "hi@chenmo.dev" },
+  { "type": "website", "value": "https://chenmo.dev", "label": { "zh": "个人网站", "en": "Website" } },
+  { "type": "leetcode", "value": "https://leetcode.cn/u/chenmo" }
+]

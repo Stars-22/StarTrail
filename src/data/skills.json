@@ -1,0 +1,50 @@
+{
+  "categories": [
+    {
+      "id": "languages",
+      "name": { "zh": "语言", "en": "Languages" },
+      "items": [
+        { "name": "TypeScript", "icon": "typescript", "badge": "https://img.shields.io/badge/TypeScript-B5543B?style=flat-square" },
+        { "name": "JavaScript", "icon": "javascript", "badge": "https://img.shields.io/badge/JavaScript-B5543B?style=flat-square" },
+        { "name": "Go", "icon": "go", "badge": "https://img.shields.io/badge/Go-B5543B?style=flat-square" },
+        { "name": "Rust", "icon": "rust", "badge": "https://img.shields.io/badge/Rust-B5543B?style=flat-square" },
+        { "name": "SQL", "icon": "generic:database", "badge": "https://img.shields.io/badge/SQL-B5543B?style=flat-square" }
+      ]
+    },
+    {
+      "id": "frontend",
+      "name": { "zh": "前端", "en": "Frontend" },
+      "items": [
+        { "name": "React", "icon": "react", "badge": "https://img.shields.io/badge/React-B5543B?style=flat-square" },
+        { "name": "Vue 3", "icon": "vuedotjs", "badge": "https://img.shields.io/badge/Vue_3-B5543B?style=flat-square" },
+        { "name": "Svelte", "icon": "svelte", "badge": "https://img.shields.io/badge/Svelte-B5543B?style=flat-square" },
+        { "name": "Vite", "icon": "vite", "badge": "https://img.shields.io/badge/Vite-B5543B?style=flat-square" },
+        { "name": "Tailwind CSS", "icon": "tailwindcss", "badge": "https://img.shields.io/badge/Tailwind_CSS-B5543B?style=flat-square" },
+        { "name": "Canvas", "icon": "generic:image", "badge": "https://img.shields.io/badge/Canvas-B5543B?style=flat-square" },
+        { "name": "WebGL", "icon": "generic:cube", "badge": "https://img.shields.io/badge/WebGL-B5543B?style=flat-square" }
+      ]
+    },
+    {
+      "id": "backend",
+      "name": { "zh": "后端", "en": "Backend" },
+      "items": [
+        { "name": "Node.js", "icon": "nodedotjs", "badge": "https://img.shields.io/badge/Node.js-B5543B?style=flat-square" },
+        { "name": "NestJS", "icon": "nestjs", "badge": "https://img.shields.io/badge/NestJS-B5543B?style=flat-square" },
+        { "name": "PostgreSQL", "icon": "postgresql", "badge": "https://img.shields.io/badge/PostgreSQL-B5543B?style=flat-square" },
+        { "name": "Redis", "icon": "redis", "badge": "https://img.shields.io/badge/Redis-B5543B?style=flat-square" },
+        { "name": "Docker", "icon": "docker", "badge": "https://img.shields.io/badge/Docker-B5543B?style=flat-square" }
+      ]
+    },
+    {
+      "id": "engineering",
+      "name": { "zh": "工程", "en": "Engineering" },
+      "items": [
+        { "name": "Git", "icon": "git", "badge": "https://img.shields.io/badge/Git-B5543B?style=flat-square" },
+        { "name": "Linux", "icon": "linux", "badge": "https://img.shields.io/badge/Linux-B5543B?style=flat-square" },
+        { "name": "Nginx", "icon": "nginx", "badge": "https://img.shields.io/badge/Nginx-B5543B?style=flat-square" },
+        { "name": "CI/CD", "icon": "generic:infinity", "badge": "https://img.shields.io/badge/CI%2FCD-B5543B?style=flat-square" },
+        { "name": "Vitest", "icon": "vitest", "badge": "https://img.shields.io/badge/Vitest-B5543B?style=flat-square" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+---
+import { t, type Lang } from '../utils/i18n';
+
+interface NowEntry {
+  name: Record<string, string>;
+  tags: Record<string, string[]>;
+  description: Record<string, string>;
+  startedAt: string;
+}
+
+interface Props {
+  item: NowEntry;
+  lang: Lang;
+}
+
+const { item, lang } = Astro.props;
+const tags = item.tags[lang] ?? [];
+---
+
+<article class="now-item" data-reveal>
+  <div class="now-head">
+    <h2 class="now-name">{item.name[lang]}</h2>
+    <span class="now-date mono">{t(lang, 'now.startedAt')} {item.startedAt}</span>
+  </div>
+  {tags.length > 0 && <ul class="now-tags">{tags.map((tag) => <li class="chip">{tag}</li>)}</ul>}
+  <p class="now-desc">{item.description[lang]}</p>
+</article>
+
+<style>
+  .now-item {
+    padding: var(--space-5) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .now-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+  .now-name {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 600;
+    line-height: var(--leading-tight);
+  }
+  .now-date {
+    font-size: var(--text-xs);
+    color: var(--muted);
+  }
+  .now-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    margin-top: var(--space-3);
+  }
+  .now-desc {
+    margin-top: var(--space-3);
+    max-width: 62ch;
+    font-size: 14.5px;
+    color: var(--soft);
+    line-height: 1.95;
+  }
+</style>

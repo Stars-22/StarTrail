@@ -1,0 +1,111 @@
+---
+import profile from '../data/profile.json';
+import { t, type Lang } from '../utils/i18n';
+import { features } from '../utils/features';
+import Nav from './Nav.astro';
+import ThemeToggle from './ThemeToggle.astro';
+import LangToggle from './LangToggle.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: Lang;
+  activeNav: string;
+  path: string;
+}
+
+const { lang, activeNav, path } = Astro.props;
+---
+
+<div
+  id="drawer"
+  class="drawer"
+  hidden
+  role="dialog"
+  aria-modal="true"
+  aria-label={t(lang, 'nav.ariaLabel')}
+>
+  <div class="drawer-head">
+    <span class="drawer-name">{profile.name[lang]}</span>
+    <button class="drawer-close" type="button" id="drawer-close" aria-label={t(lang, 'nav.close')}>
+      <Icon name="close" size={20} />
+    </button>
+  </div>
+
+  <Nav lang={lang} activeNav={activeNav} class="nav nav--drawer drawer-nav" />
+
+  <div class="drawer-bottom">
+    <div class="drawer-controls">
+      {features.theme && <ThemeToggle lang={lang} />}
+      <LangToggle lang={lang} path={path} />
+    </div>
+  </div>
+</div>
+
+<style>
+  .drawer {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-drawer);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: var(--space-5) var(--space-5) var(--space-6);
+    background: var(--bg);
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+      opacity var(--motion-slow) var(--ease),
+      transform var(--motion-slow) var(--ease);
+  }
+  .drawer.is-open {
+    opacity: 1;
+    transform: none;
+  }
+  .drawer[hidden] {
+    display: none;
+  }
+  .drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--line);
+  }
+  .drawer-name {
+    font-family: var(--font-serif);
+    font-size: var(--text-name);
+    font-weight: 600;
+  }
+  .drawer-close {
+    display: inline-grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-circle);
+    color: var(--muted);
+  }
+  .drawer-close:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .drawer-nav {
+    margin-top: var(--space-5);
+  }
+  .drawer-bottom {
+    margin-top: auto;
+    padding-top: var(--space-6);
+  }
+  .drawer-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+  @media (min-width: 768px) {
+    .drawer {
+      display: none !important;
+    }
+  }
+</style>
