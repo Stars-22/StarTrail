@@ -1,5 +1,6 @@
 ---
 import site from '../data/site.json';
+import PoweredBy from './PoweredBy.astro';
 import { t, type Lang } from '../utils/i18n';
 
 interface Props {
@@ -7,26 +8,35 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+const copyright = site.copyright[lang].replace('{year}', String(new Date().getFullYear()));
 ---
 
 <footer class="site-footer">
-  <a href={site.repoUrl} target="_blank" rel="noopener noreferrer" aria-label={t(lang, 'footer.viewSource')}>
-    StarTrail
-  </a>
-  <span>{site.poweredBy[lang]}</span>
+  <div class="sf-row">
+    <span>{copyright}</span>
+    <a href={site.repoUrl} target="_blank" rel="noopener noreferrer" aria-label={t(lang, 'footer.viewSource')}>
+      StarTrail
+    </a>
+  </div>
+  <PoweredBy lang={lang} />
 </footer>
 
 <style>
   .site-footer {
     display: flex;
-    justify-content: space-between;
-    gap: var(--space-3);
+    flex-direction: column;
+    gap: var(--space-2);
     margin-top: var(--space-8);
     padding-top: var(--space-4);
     border-top: 1px solid var(--line);
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     color: var(--muted);
+  }
+  .sf-row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-4);
   }
   a {
     text-decoration: none;

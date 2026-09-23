@@ -7,6 +7,7 @@ import { utcOffsetLabel } from '../utils/timezone';
 import Nav from './Nav.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import LangToggle from './LangToggle.astro';
+import PoweredBy from './PoweredBy.astro';
 
 interface Props {
   lang: Lang;
@@ -16,6 +17,7 @@ interface Props {
 
 const { lang, activeNav, path } = Astro.props;
 const tzLabel = utcOffsetLabel(profile.timezone, lang === 'zh' ? 'UTC' : 'GMT');
+const copyright = site.copyright[lang].replace('{year}', String(new Date().getFullYear()));
 ---
 
 <aside class="sidebar" aria-label={t(lang, 'nav.ariaLabel')}>
@@ -42,10 +44,13 @@ const tzLabel = utcOffsetLabel(profile.timezone, lang === 'zh' ? 'UTC' : 'GMT');
         <LangToggle lang={lang} path={path} />
       </div>
       <div class="sb-foot">
-        <a href={site.repoUrl} target="_blank" rel="noopener noreferrer" aria-label={t(lang, 'footer.viewSource')}>
-          StarTrail
-        </a>
-        <span>{site.poweredBy[lang]}</span>
+        <div class="sb-foot-row">
+          <span>{copyright}</span>
+          <a href={site.repoUrl} target="_blank" rel="noopener noreferrer" aria-label={t(lang, 'footer.viewSource')}>
+            StarTrail
+          </a>
+        </div>
+        <PoweredBy lang={lang} />
       </div>
     </div>
   </div>
@@ -128,6 +133,11 @@ const tzLabel = utcOffsetLabel(profile.timezone, lang === 'zh' ? 'UTC' : 'GMT');
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     color: var(--muted);
+  }
+  .sb-foot-row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-4);
   }
   .sb-foot a {
     text-decoration: none;

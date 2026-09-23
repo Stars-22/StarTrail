@@ -1,0 +1,51 @@
+---
+import site from '../data/site.json';
+import type { Lang } from '../utils/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const [before, after = ''] = site.poweredBy[lang].split('{list}');
+const prefix = before.trim();
+const suffix = after.trim();
+const credits = site.credits;
+---
+
+<span class="powered-by">
+  {prefix && <span class="pb-label">{prefix}</span>}
+  {credits.map((credit) => (
+    <a class="pb-credit" href={credit.url} target="_blank" rel="noopener noreferrer">{credit.name}</a>
+  ))}
+  {suffix && <span class="pb-label">{suffix}</span>}
+</span>
+
+<style>
+  .powered-by {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 0.45em;
+    row-gap: 0.2em;
+  }
+  /* 名称与标签整体不拆行，保证在「项之间」换行 */
+  .pb-label,
+  .pb-credit {
+    white-space: nowrap;
+  }
+  .pb-credit {
+    color: inherit;
+    text-decoration: none;
+  }
+  .pb-credit:hover {
+    color: var(--accent);
+  }
+  /* 分隔点绑定在前一个名称之后，避免换行时出现在行首 */
+  .pb-credit:not(:last-of-type)::after {
+    content: '·';
+    margin-left: 0.45em;
+    color: var(--muted);
+  }
+</style>
