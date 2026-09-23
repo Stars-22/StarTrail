@@ -154,29 +154,53 @@ function altLink(target: Lang): string {
       /* ---------- 抽屉 ---------- */
       const drawer = document.getElementById('drawer');
       const menuBtn = document.getElementById('menu-btn');
-      const closeBtn = document.getElementById('drawer-close');
       let lastFocus: HTMLElement | null = null;
+
+      function setMenuState(open: boolean) {
+        if (!menuBtn) return;
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute(
+          'aria-label',
+          (open ? menuBtn.dataset.labelClose : menuBtn.dataset.labelMenu) ?? '',
+        );
+      }
 
       function openDrawer() {
         if (!drawer) return;
         lastFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
         drawer.hidden = false;
         requestAnimationFrame(() => drawer.classList.add('is-open'));
-        menuBtn?.setAttribute('aria-expanded', 'true');
+        setMenuState(true);
         document.body.style.overflow = 'hidden';
         drawer.querySelector<HTMLElement>('a, button')?.focus();
       }
       function closeDrawer() {
         if (!drawer || drawer.hidden) return;
         drawer.classList.remove('is-open');
-        menuBtn?.setAttribute('aria-expanded', 'false');
+        setMenuState(false);
         document.body.style.overflow = '';
         if (prefersReduced) drawer.hidden = true;
         else setTimeout(() => (drawer.hidden = true), 420);
         lastFocus?.focus();
       }
-      menuBtn?.addEventListener('click', openDrawer);
-      closeBtn?.addEventListener('click', closeDrawer);
+      menuBtn?.addEventListener('click', () => {
+        if (drawer && !drawer.hidden) closeDrawer();
+        else openDrawer();
+      });
+      /* 抽屉打开时点击外部：仅关闭抽屉并拦截底层交互，避免误点跳转 */
+      document.addEventListener(
+        'click',
+        (event) => {
+          if (!drawer || drawer.hidden) return;
+          const target = event.target;
+          if (!(target instanceof Element)) return;
+          if (drawer.contains(target) || menuBtn?.contains(target)) return;
+          event.preventDefault();
+          event.stopPropagation();
+          closeDrawer();
+        },
+        true,
+      );
       document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') closeDrawer();
       });

@@ -25,8 +25,11 @@ const { lang } = Astro.props;
     aria-expanded="false"
     aria-controls="drawer"
     aria-label={t(lang, 'nav.menu')}
+    data-label-menu={t(lang, 'nav.menu')}
+    data-label-close={t(lang, 'nav.close')}
   >
-    <Icon name="menu" size={18} />
+    <span class="ico ico-menu"><Icon name="menu" size={18} /></span>
+    <span class="ico ico-close"><Icon name="close" size={18} /></span>
   </button>
 </header>
 
@@ -91,6 +94,19 @@ const { lang } = Astro.props;
   .menu-btn:hover {
     color: var(--accent);
     border-color: var(--accent);
+  }
+  .ico {
+    display: inline-flex;
+  }
+  .ico-close {
+    display: none;
+  }
+  /* 打开时菜单按钮变为「×」（位置不变） */
+  .menu-btn[aria-expanded='true'] .ico-menu {
+    display: none;
+  }
+  .menu-btn[aria-expanded='true'] .ico-close {
+    display: inline-flex;
   }
   @media (max-width: 767px) {
     .topbar {

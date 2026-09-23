@@ -316,6 +316,25 @@ ol {
   display: none;
 }
 
+/* 抽屉导航：单行，项间距均匀；左右边距 = 项间距 + 额外一块 */
+.drawer-nav {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: baseline;
+  padding: var(--space-4) var(--space-3) 0;
+}
+.drawer-nav a {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 400;
+  padding: 4px 0;
+  white-space: nowrap;
+}
+.drawer-nav a.is-active {
+  color: var(--accent);
+}
+
 /* 侧栏导航：整体右缩进，不再与上方姓名左对齐 */
 .sidebar .nav {
   padding-left: var(--sb-nav-indent);
