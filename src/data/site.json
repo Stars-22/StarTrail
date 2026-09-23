@@ -12,7 +12,7 @@
   ],
   "githubStats": {
     "provider": "https://dev-stats.mintimate.cn",
-    "cards": ["stats", "topLangs", "badges"]
+    "cards": ["stats", "topLangs"]
   },
   "features": {
     "i18n": true,

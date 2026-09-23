@@ -18,24 +18,16 @@ interface Palette {
   bg: string;
   fg: string;
   accent: string;
-  line: string;
-  label: string;
 }
 
-const light: Palette = { bg: 'FCFBF7', fg: '1D1B16', accent: 'B5451F', line: 'D8D3C4', label: '8B8678' };
-const dark: Palette = { bg: '322E28', fg: 'EAE3D6', accent: 'D8764F', line: '4A443B', label: '4A443B' };
+const light: Palette = { bg: 'FCFBF7', fg: '1D1B16', accent: 'B5451F' };
+const dark: Palette = { bg: '322E28', fg: 'EAE3D6', accent: 'D8764F' };
 
 const statsUrl = (c: Palette) =>
   `${provider}/api?username=${user}&show_icons=true&hide_border=true&locale=${locale}&bg_color=${c.bg}&title_color=${c.accent}&text_color=${c.fg}&icon_color=${c.accent}`;
 
 const langsUrl = (c: Palette) =>
   `${provider}/api/top-langs/?username=${user}&layout=compact&hide_border=true&locale=${locale}&bg_color=${c.bg}&title_color=${c.accent}&text_color=${c.fg}`;
-
-const followersUrl = (c: Palette) =>
-  `https://img.shields.io/github/followers/${user}?style=flat-square&logo=github&label=Followers&color=${c.accent}&labelColor=${c.label}`;
-
-const viewsUrl = (c: Palette) =>
-  `https://komarev.com/ghpvc/?username=${user}&style=flat-square&color=${c.accent}&label=Views`;
 ---
 
 <section class="section" data-github-stats>
@@ -65,28 +57,6 @@ const viewsUrl = (c: Palette) =>
         />
       )
     }
-    {
-      cards.includes('badges') && (
-        <div class="stat-badges stat-wide">
-          <img
-            class="stat-badge"
-            src={followersUrl(light)}
-            data-light={followersUrl(light)}
-            data-dark={followersUrl(dark)}
-            alt={t(lang, 'about.statsBadges')}
-            loading="lazy"
-          />
-          <img
-            class="stat-badge"
-            src={viewsUrl(light)}
-            data-light={viewsUrl(light)}
-            data-dark={viewsUrl(dark)}
-            alt={t(lang, 'about.statsBadges')}
-            loading="lazy"
-          />
-        </div>
-      )
-    }
   </div>
 </section>
 
@@ -101,24 +71,16 @@ const viewsUrl = (c: Palette) =>
     .stats {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-  }
-  .stat-wide {
-    grid-column: 1 / -1;
+    /* 并排时两卡盒子等高（底色一致，contain 留白不可见） */
+    .stat-img {
+      aspect-ratio: 450 / 195;
+      object-fit: contain;
+      object-position: left top;
+    }
   }
   .stat-img {
     display: block;
     width: 100%;
     height: auto;
-  }
-  .stat-badges {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-2);
-  }
-  .stat-badge {
-    display: block;
-    height: 20px;
-    width: auto;
   }
 </style>
