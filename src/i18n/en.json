@@ -1,12 +1,12 @@
 {
   "meta": {
     "title": {
-      "about": "About · {site}",
-      "now": "Now · {site}",
-      "projects": "Projects · {site}",
+      "about": "{site} · About",
+      "now": "{site} · Now",
+      "projects": "{site} · Projects",
       "projectDetail": "{project} · {site}",
-      "experience": "Experience · {site}",
-      "recommendations": "Recommendations · {site}"
+      "experience": "{site} · Experience",
+      "recommendations": "{site} · Recommendations"
     },
     "description": {
       "about": "Introduction, current status, and how to reach me.",

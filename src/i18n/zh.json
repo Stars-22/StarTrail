@@ -1,12 +1,12 @@
 {
   "meta": {
     "title": {
-      "about": "关于 · {site}",
-      "now": "近况 · {site}",
-      "projects": "项目 · {site}",
+      "about": "{site} · 关于",
+      "now": "{site} · 近况",
+      "projects": "{site} · 项目",
       "projectDetail": "{project} · {site}",
-      "experience": "经历 · {site}",
-      "recommendations": "推荐 · {site}"
+      "experience": "{site} · 经历",
+      "recommendations": "{site} · 推荐"
     },
     "description": {
       "about": "个人介绍、当前状态与联系方式。",
