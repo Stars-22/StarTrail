@@ -18,7 +18,7 @@ const fmt = (n?: number): string =>
 const time = data.end ? `${data.start} – ${data.end}` : `${data.start} – ${t(lang, 'experience.present')}`;
 ---
 
-<article class={`project-card${data.cover ? ' has-cover' : ''}`}>
+<article class={`project-card${data.cover ? ' has-cover' : ''}`} data-href={href}>
   <div class="card-body">
     <h3 class="card-title"><a href={href}>{data.title}</a></h3>
     <span class={`card-badge ${data.openSource ? 'is-oss' : 'is-private'}`}>
@@ -50,6 +50,7 @@ const time = data.end ? `${data.start} – ${data.end}` : `${data.start} – ${t
     display: grid;
     border: 1px solid var(--line);
     background: var(--bg2);
+    cursor: pointer;
     transition:
       border-color var(--motion-base) var(--ease),
       transform var(--motion-base) var(--ease);
@@ -96,11 +97,6 @@ const time = data.end ? `${data.start} – ${data.end}` : `${data.start} – ${t
   }
   .card-title a {
     text-decoration: none;
-  }
-  .card-title a::after {
-    content: '';
-    position: absolute;
-    inset: 0;
   }
   .card-title a:hover {
     color: var(--accent);

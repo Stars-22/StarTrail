@@ -34,70 +34,64 @@ const ariaLabel = !isCopy && !isEmail
   : `${label} · ${item.value}`;
 ---
 
-{
-  isCopy ? (
-    <button class="contact-item" type="button" data-copy={item.value} aria-label={ariaLabel}>
-      <span class="ci-icon"><Icon name={icon} size={20} /></span>
-      <span class="ci-label">{label}</span>
-      <span class="ci-value mono">{item.value}</span>
-      <span class="ci-action" aria-hidden="true"><Icon name="copy" size={14} /></span>
-    </button>
-  ) : (
-    <a
-      class="contact-item"
-      href={href}
-      target={isEmail ? undefined : '_blank'}
-      rel={isEmail ? undefined : 'noopener noreferrer'}
-      aria-label={ariaLabel}
-    >
-      <span class="ci-icon"><Icon name={icon} size={20} /></span>
-      <span class="ci-label">{label}</span>
-      <span class="ci-value mono">{item.value}</span>
-      <span class="ci-action" aria-hidden="true"><Icon name="external" size={14} /></span>
-    </a>
-  )
-}
+<div class="contact-item">
+  <span class="ci-icon"><Icon name={icon} size={20} /></span>
+  <span class="ci-body">
+    <span class="ci-label">{label}</span>
+    {
+      isCopy ? (
+        <button
+          class="ci-value mono"
+          type="button"
+          data-copy={item.value}
+          aria-label={ariaLabel}
+        >
+          {item.value}
+        </button>
+      ) : (
+        <a
+          class="ci-value mono"
+          href={href}
+          target={isEmail ? undefined : '_blank'}
+          rel={isEmail ? undefined : 'noopener noreferrer'}
+          aria-label={ariaLabel}
+        >
+          {item.value}
+        </a>
+      )
+    }
+  </span>
+</div>
 
 <style>
   .contact-item {
     display: grid;
-    grid-template-columns: 20px 1fr auto;
+    grid-template-columns: 20px 1fr;
+    column-gap: var(--space-3);
     align-items: center;
-    gap: var(--space-3);
     width: 100%;
     padding: var(--space-3) 0;
     border-bottom: 1px solid var(--line);
-    text-align: left;
     color: inherit;
-    text-decoration: none;
   }
   .ci-icon {
     display: inline-flex;
     color: var(--muted);
   }
+  .ci-body {
+    min-width: 0;
+  }
   .ci-label {
+    display: block;
     font-size: var(--text-xs);
     color: var(--muted);
   }
   .ci-value {
-    grid-column: 2;
     font-size: var(--text-sm);
+    text-decoration: none;
     transition: color var(--motion-fast) var(--ease);
   }
-  .ci-action {
-    grid-column: 3;
-    grid-row: 1 / 3;
-    display: inline-flex;
-    color: var(--muted);
-    transition:
-      color var(--motion-fast) var(--ease),
-      transform var(--motion-fast) var(--ease);
-  }
-  .contact-item:hover .ci-value,
-  .contact-item:hover .ci-action {
+  .ci-value:hover {
     color: var(--accent);
-  }
-  .contact-item:hover .ci-action {
-    transform: translate(3px, -3px);
   }
 </style>

@@ -100,6 +100,18 @@ function altLink(target: Lang): string {
     <script>
       const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+      /* ---------- 项目卡片整卡点击（选中文字时不跳转） ---------- */
+      document.querySelectorAll<HTMLElement>('.project-card[data-href]').forEach((card) => {
+        card.addEventListener('click', (event) => {
+          const target = event.target;
+          if (target instanceof Element && target.closest('a, button')) return;
+          const selection = window.getSelection();
+          if (selection && !selection.isCollapsed) return;
+          const href = card.dataset.href;
+          if (href) window.location.href = href;
+        });
+      });
+
       /* ---------- 滚动渐显 ---------- */
       const revealEls = document.querySelectorAll<HTMLElement>('[data-reveal]');
       if (!('IntersectionObserver' in window) || prefersReduced) {
