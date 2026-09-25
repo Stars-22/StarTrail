@@ -1,24 +1,22 @@
 {
-  "name": { "zh": "陈默", "en": "Chen Mo" },
-  "avatar": "/images/avatar.svg",
+  "name": { "zh": "繁星", "en": "Stars" },
+  "avatar": "/images/avatar.jpg",
   "roles": {
-    "zh": ["全栈开发工程师", "前端工程师", "Node.js 后端工程师", "独立开发者"],
-    "en": ["Full-stack Developer", "Frontend Engineer", "Node.js Backend Engineer", "Indie Developer"]
+    "zh": ["C++ 服务端开发工程师", "SDK / 库开发", "研发效能", "架构设计"],
+    "en": ["C++ Backend Engineer", "SDK / Library Engineer", "Developer Productivity", "Architecture"]
   },
-  "location": { "zh": "杭州 / 中国", "en": "Hangzhou / China" },
+  "location": { "zh": "东莞 / 中国", "en": "DongGuan / China" },
   "timezone": "Asia/Shanghai",
-  "status": { "zh": "在职，开放合作", "en": "Employed, open to collaboration" },
-  "started": { "coding": "2019-09", "working": "2020-03" },
+  "status": { "zh": "2027 届 · 在职实习，寻更匹配的方向", "en": "Class of 2027 · Interning, seeking a better fit" },
+  "started": { "coding": "2018-06", "working": "2026-01" },
   "bio": {
     "zh": [
-      "你好，我是陈默，一名在杭州写代码第六年的全栈工程师。我相信好的软件是「删」出来的——把不必要的复杂度一层层削掉，剩下的才是产品本身。",
-      "白天我用 TypeScript 和 Go 搭服务，晚上维护几个开源小项目。我对编辑器、开发者工具和「小而确定」的软件有执念：一个工具如果能小于 100kb 还让人惊艳，那它就值得存在。",
-      "不写代码的时候，我在学英语、拍照，以及给朋友安利各种奇奇怪怪的好东西——「推荐」那页就是罪证。"
+      "一名学习能力强、思路灵活的软件工程师。",
+      "信奉「架构与契约先行，实现随后」——只有边界划分明确，系统才便于持续演进、局部替换和顺利交接。模块做得好不好，拎出来单独一测便知。善于用工具处理重复劳动，把精力留给真正需要判断力的地方。写代码时始终想着下一位读者——看得懂、测得动、砍得掉，才算真正完成。"
     ],
     "en": [
-      "Hi, I'm Chen Mo, a full-stack engineer in Hangzhou, six years into writing code. I believe good software is made by deletion — strip away layer after layer of unnecessary complexity, and what remains is the product.",
-      "By day I build services with TypeScript and Go; by night I maintain a few small open-source projects. I have a soft spot for editors, dev tools and \"small but certain\" software: if a tool can stay under 100kb and still delight, it deserves to exist.",
-      "When I'm not coding, I'm learning English, taking photos, and pushing oddly specific recommendations onto friends — the Recommendations page is the evidence."
+      "A software engineer who is a fast learner and a flexible thinker.",
+      "I believe in \"architecture and contracts first, implementation after\" — only when boundaries are clearly drawn can a system keep evolving, have parts swapped out, and be handed off smoothly. Whether a module is any good becomes obvious the moment you pull it out and test it in isolation. I'm good at using tools to handle repetitive work, so I can save my energy for the parts that truly need judgement. When I write code I always keep the next reader in mind — understandable, testable, and deletable is the only way I'd call it truly done."
     ]
   }
 }

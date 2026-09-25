@@ -53,7 +53,7 @@
 | 定时任务 | cron-job.org（每日 POST） |
 | DNS | Cloudflare（自定义域名 CNAME → EdgeOne Pages） |
 | 数据源 | GitHub REST API |
-| 外部图片 | GitHub Readme Stats 镜像（可配置）、Simple Icons CDN |
+| 外部图片 | GitHub Readme Stats 镜像（可配置） |
 
 ## 目录结构
 
@@ -112,7 +112,7 @@ npm run check     # astro check（类型/内容诊断）
 ```jsonc
 {
   "title": "StarTrail",
-  "url": "https://startrail.example.com",
+  "url": "https://startrail.stars22.xyz",
   "defaultLang": "en",
   "githubUser": "Stars-22",
   "repoUrl": "https://github.com/Stars-22/StarTrail",
@@ -205,15 +205,16 @@ npm run check     # astro check（类型/内容诊断）
       "id": "languages",
       "name": { "zh": "语言", "en": "Languages" },
       "items": [
-        { "name": "TypeScript", "icon": "typescript", "badge": "https://img.shields.io/…" }
+        { "name": { "zh": "TypeScript", "en": "TypeScript" }, "icon": "typescript", "badge": "https://img.shields.io/…" }
       ]
     }
   ]
 }
 ```
 
-- `icon`：优先使用的图标。`简单 slug`（如 `typescript`、`react`）走 Simple Icons CDN（`https://cdn.simpleicons.org/<slug>/B5451F`）；`generic:database | generic:image | generic:cube | generic:infinity` 使用内置线性图标。
-- `badge`：给 `icon` 缺省时的图片回退地址。
+- `name`：技能名（i18n），按当前语言显示。
+- `icon`：内置图标名。品牌名（如 `typescript`、`react`、`docker`）对应 `Icon.astro` 中内联的品牌 SVG；`generic:xxx` 使用内置线性图标（`database | image | cube | infinity | cpu | layers | check | activity | file | terminal | network` 等）。品牌图标需先在 `Icon.astro` 的 `paths` 中登记。
+- `badge`：`icon` 缺省时的图片回退地址。
 - 渲染为「图标 + 名称」胶囊。
 
 ### experience.json（工作经历）
@@ -418,7 +419,7 @@ KV 键空间：
 
 - **Google Fonts**（Fraunces / Noto Serif SC / Noto Sans SC / JetBrains Mono）：`BaseLayout` 通过 `<link>` 引入；网络不可达时回退到系统字体栈。
 - **GitHub 统计图**：由 `site.json.githubStats.provider` 提供（当前为 `dev-stats.mintimate.cn` 镜像）；服务不可用或不可达时图片不显示。`bg_color=00000000` 使背景透明。
-- **Simple Icons CDN**（`cdn.simpleicons.org`）：技能徽章品牌图标来源；不可达时仅图标缺失，名称仍在（或回退 `badge`）。
+- **技能图标**：品牌图标已内联在 `src/components/Icon.astro`（源自 Simple Icons），不依赖外部 CDN；新增品牌图标需在该文件补登记。
 - **边缘函数**：`/api/*` 依赖 EdgeOne Pages 运行环境与 KV 绑定；本地开发需用官方本地模拟。
 - 站点为纯静态 + 边缘函数，无服务端渲染、无数据库。
 
@@ -440,5 +441,5 @@ KV 键空间：
 - [GitHub REST API](https://docs.github.com/en/rest) — Star/Fork 数据
 - [GitHub Readme Stats](https://github.com/anuraghazra/github-readme-stats) — 统计图片卡（上游项目）
 - [dev-stats.mintimate.cn](https://dev-stats.mintimate.cn) — GitHub Readme Stats 镜像，本站统计图服务
-- [Simple Icons](https://simpleicons.org) — 技能徽章图标
+- [Simple Icons](https://simpleicons.org) — 技能徽章品牌图标（已内联至 `Icon.astro`）
 - [Google Fonts](https://fonts.google.com) — Fraunces / Noto Serif SC / Noto Sans SC / JetBrains Mono

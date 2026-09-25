@@ -1,54 +1,39 @@
 [
   {
-    "company": { "zh": "光年科技", "en": "Lightyear Tech" },
-    "role": { "zh": "高级全栈工程师", "en": "Senior Full-stack Engineer" },
-    "start": "2023-07",
+    "company": { "zh": "东莞魔鬼鱼科技有限公司", "en": "Dongguan Devilray Technology Co., Ltd." },
+    "role": { "zh": "服务端 / 推理引擎开发实习生", "en": "Backend / Inference Engine Intern" },
+    "start": "2026-01",
     "end": null,
-    "location": { "zh": "杭州", "en": "Hangzhou" },
+    "location": { "zh": "东莞", "en": "Dongguan" },
     "highlights": {
       "zh": [
-        "负责核心 SaaS 产品的架构演进，主导微前端拆分",
-        "首屏加载从 3.2s 优化到 0.9s",
-        "带领 4 人小组，一半时间写代码，一半时间帮别人写好代码"
+        "独立设计并手写 C++17 语音合成推理引擎（不依赖 LibTorch / ONNX Runtime）：自研算子库 SLib + SpeechTokenizer 前端，51 文件 / ~5,554 行 / 134 commits。",
+        "手写 AVX2 / FMA 内核（微内核 SGEMM、im2col 卷积、因果卷积滚动 cache、对齐内存池 BufferPool），设计二进制权重格式与 mmap 零拷贝加载，并以 PyTorch / ONNX 金标逐算子验证。",
+        "主导设计两级代理 IP 池系统（~1.5 万行）：三服务 + 公共库分层、统一响应契约与增量同步水位线协议、注册表 + 策略扩展点。",
+        "设计高并发与高可用：有界队列 + 固定 worker、连接池串行 + keep-alive、单写者模型、checkpoint 断点续传与自动 failover。"
       ],
       "en": [
-        "Own the architecture evolution of the core SaaS product and led the micro-frontend split",
-        "Cut first paint from 3.2s down to 0.9s",
-        "Leading a team of four — half my time writing code, the other half helping others write it well"
+        "Independently designed and hand-wrote a C++17 TTS inference engine with no LibTorch / ONNX Runtime dependency: self-built operator library SLib plus a SpeechTokenizer frontend — 51 files / ~5,554 lines / 134 commits.",
+        "Hand-wrote AVX2 / FMA kernels (a micro-kernel SGEMM, im2col convolution, causal convolution with a rolling cache, an aligned memory pool BufferPool), designed a custom binary weight format with mmap zero-copy loading, and validated it operator-by-operator against PyTorch / ONNX golden references.",
+        "Led the design of a two-tier proxy IP pool system (~15k lines): three services plus a shared library, unified response contract, incremental-sync watermark protocol, and registry + strategy extension points.",
+        "Designed concurrency and high availability: bounded queues + fixed workers, a serial connection pool with keep-alive, a single-writer model, checkpoint-based resumable execution and automatic failover."
       ]
     }
   },
   {
-    "company": { "zh": "白鲸网络", "en": "Whale Network" },
-    "role": { "zh": "前端工程师", "en": "Frontend Engineer" },
-    "start": "2021-07",
-    "end": "2023-06",
-    "location": { "zh": "杭州", "en": "Hangzhou" },
+    "company": { "zh": "吉林师范大学", "en": "Jilin Normal University" },
+    "role": { "zh": "软件工程 · 本科（2027 届）", "en": "B.Sc. Software Engineering (Class of 2027)" },
+    "start": "2023-08",
+    "end": "2027-06",
+    "location": { "zh": "四平", "en": "Siping" },
     "highlights": {
       "zh": [
-        "从零搭建内部设计系统，被 6 条业务线采用",
-        "主导富文本编辑器性能专项，输入延迟降低 60%"
+        "主修数据结构与算法、操作系统、计算机网络、数据库系统、C++ 程序设计等课程。",
+        "主动组织学习小组、乐于分享，多次帮助同学解决技术难题，锻炼了沟通与团队协作能力。"
       ],
       "en": [
-        "Built the internal design system from scratch, adopted by 6 product lines",
-        "Led the rich-text editor performance push and cut input latency by 60%"
-      ]
-    }
-  },
-  {
-    "company": { "zh": "蓝盒子工作室", "en": "Bluebox Studio" },
-    "role": { "zh": "开发工程师（实习转正）", "en": "Developer (intern → full-time)" },
-    "start": "2020-03",
-    "end": "2021-06",
-    "location": { "zh": "杭州", "en": "Hangzhou" },
-    "highlights": {
-      "zh": [
-        "小程序与 H5 项目从 0 到上线交付",
-        "第一次真切体会到「上线」两个字的分量"
-      ],
-      "en": [
-        "Shipped mini-programs and H5 projects from zero to production",
-        "Learned exactly how much the word \"ship\" weighs"
+        "Coursework: data structures & algorithms, operating systems, computer networks, database systems, C++ programming and more.",
+        "Proactively organized study groups and shared knowledge, repeatedly helping classmates solve technical problems — strengthening communication and teamwork."
       ]
     }
   }

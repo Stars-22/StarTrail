@@ -1,22 +1,22 @@
 [
   {
-    "title": { "zh": "开源项目 nova-ui 入选 GitHub Trending 日榜", "en": "nova-ui hit GitHub Trending (daily)" },
-    "issuer": { "zh": "GitHub", "en": "GitHub" },
+    "title": { "zh": "CCPC 中国大学生程序设计竞赛 · 全国邀请赛（长春）铜牌", "en": "CCPC Collegiate Programming Contest · National Invitational (Changchun), Bronze" },
+    "issuer": { "zh": "中国大学生程序设计竞赛组委会", "en": "CCPC Committee" },
     "year": 2024
   },
   {
-    "title": { "zh": "蓝桥杯 Web 应用开发 · 省级一等奖", "en": "Lanqiao Cup Web Development · Provincial 1st Prize" },
+    "title": { "zh": "蓝桥杯 C/C++ 程序设计大赛 · 国赛二等奖（大学）", "en": "Lanqiao Cup C/C++ Programming Contest · National 2nd Prize (University)" },
     "issuer": { "zh": "工业和信息化部人才交流中心", "en": "MIIT Talent Exchange Center" },
-    "year": 2022
+    "year": 2024
   },
   {
-    "title": { "zh": "CET-4 · 587 分（六级：正在路上）", "en": "CET-4 · 587 (CET-6: still fighting)" },
-    "issuer": { "zh": "全国大学英语四六级考试委员会", "en": "National CET Committee" },
+    "title": { "zh": "蓝桥杯 C/C++ 程序设计大赛 · 国赛二等奖（高中）", "en": "Lanqiao Cup C/C++ Programming Contest · National 2nd Prize (High School)" },
+    "issuer": { "zh": "工业和信息化部人才交流中心", "en": "MIIT Talent Exchange Center" },
     "year": 2021
   },
   {
-    "title": { "zh": "软考「软件设计师」中级", "en": "China Soft Exam · Software Designer (Intermediate)" },
-    "issuer": { "zh": "中国计算机技术职业资格认证", "en": "China Computer Technology Qualification" },
-    "year": 2020
+    "title": { "zh": "全国计算机等级考试 · 二级 C++", "en": "National Computer Rank Examination · Level 2 C++" },
+    "issuer": { "zh": "教育部教育考试院", "en": "National Education Examinations Authority" },
+    "year": 2024
   }
 ]

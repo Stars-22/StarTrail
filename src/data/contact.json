@@ -1,8 +1,8 @@
 [
-  { "type": "github", "value": "https://github.com/chenmo-dev" },
-  { "type": "netease", "value": "https://music.163.com" },
-  { "type": "discord", "value": "chenmo" },
-  { "type": "email", "value": "hi@chenmo.dev" },
-  { "type": "website", "value": "https://chenmo.dev", "label": { "zh": "个人网站", "en": "Website" } },
-  { "type": "leetcode", "value": "https://leetcode.cn/u/chenmo" }
+  { "type": "email", "value": "stars_22@163.com" },
+  { "type": "github", "value": "https://github.com/Stars-22" },
+  { "type": "website", "value": "https://www.stars22.xyz", "label": { "zh": "个人网站", "en": "Website" } },
+  { "type": "discord", "value": "astral_glow"},
+  { "type": "leetcode", "value": "https://leetcode.cn/u/stars22/"},
+  { "type": "netease", "value": "https://music.163.com/#/user/3350914325" }
 ]

@@ -1,29 +1,20 @@
 [
   {
-    "name": { "zh": "学英语", "en": "Learning English" },
+    "name": { "zh": "学习英语", "en": "Learning English" },
     "tags": { "zh": ["语言", "日常"], "en": ["Language", "Daily"] },
     "description": {
-      "zh": "每天 30 分钟 Anki + 一集《老友记》跟读。目标：明年裸看美剧不盯字幕，顺便把六级过了。",
-      "en": "30 minutes of Anki plus one episode of Friends with shadowing, every single day. Goal: watch shows without subtitles by next year — and pass CET-6 along the way."
+      "zh": "泡在英文内容里（文章、视频等），并和母语者闲聊，目标是能流畅阅读英文资料、用英语讲清技术方案。",
+      "en": "Immersing in English content (articles, videos and more) and chatting with native speakers — aiming to read English material fluently and explain technical designs in English."
     },
-    "startedAt": "2025-09"
+    "startedAt": "2026-03"
   },
   {
-    "name": { "zh": "维护 nova-ui", "en": "Maintaining nova-ui" },
+    "name": { "zh": "维护开源项目", "en": "Maintaining open source" },
     "tags": { "zh": ["开源", "长期"], "en": ["Open source", "Ongoing"] },
     "description": {
-      "zh": "回复 issue、review PR、写文档。开源最难的不是写代码，是持续在场。",
-      "en": "Answering issues, reviewing PRs, writing docs. The hardest part of open source is showing up, not writing code."
+      "zh": "持续打磨 NetFountain 与 FluxMeld：回复 issue、补文档、重构与测试。开源最难的不是写代码，是持续在场。",
+      "en": "Keep polishing NetFountain and FluxMeld: answering issues, writing docs, refactoring and testing. The hardest part of open source is showing up, not writing code."
     },
-    "startedAt": "2023-02"
-  },
-  {
-    "name": { "zh": "重读《DDIA》", "en": "Re-reading DDIA" },
-    "tags": { "zh": ["阅读", "每周一章"], "en": ["Reading", "1 ch / week"] },
-    "description": {
-      "zh": "《数据密集型应用系统设计》。第一遍囫囵吞枣，这一遍老老实实做笔记。",
-      "en": "Designing Data-Intensive Applications. The first pass was a blur; this time I take notes properly."
-    },
-    "startedAt": "2026-06"
+    "startedAt": "2026-08"
   }
 ]

@@ -4,106 +4,84 @@
       "id": "category",
       "name": { "zh": "类别", "en": "Category" },
       "tags": [
-        { "id": "service", "name": { "zh": "服务", "en": "Service" } },
-        { "id": "software", "name": { "zh": "软件", "en": "Software" } },
-        { "id": "hardware", "name": { "zh": "硬件", "en": "Hardware" } },
-        { "id": "web", "name": { "zh": "网站", "en": "Web" } },
-        { "id": "film", "name": { "zh": "影视", "en": "Film" } },
-        { "id": "game", "name": { "zh": "游戏", "en": "Game" } }
+        { "id": "cloud", "name": { "zh": "云服务", "en": "Cloud" } },
+        { "id": "proxy", "name": { "zh": "代理", "en": "Proxy" } },
+        { "id": "sms", "name": { "zh": "接码", "en": "SMS" } },
+        { "id": "ai", "name": { "zh": "AI", "en": "AI" } },
+        { "id": "tool", "name": { "zh": "工具", "en": "Tool" } }
       ]
     }
   ],
   "items": [
     {
-      "name": "雨云",
-      "tags": ["service"],
-      "description": { "zh": "便宜、退款爽快、客服秒回的云服务器，本站就跑在它上面。", "en": "Cheap, honest refunds, instant support. This very site runs on it." },
-      "url": "https://www.rainyun.com",
+      "name": "雨云服务器",
+      "tags": ["cloud"],
+      "description": {
+        "zh": "高性价比云服务器，多年稳定运营，首月半价；游戏云、云服务器与云应用等一站可选。",
+        "en": "High-value cloud servers, stable for years, half price for the first month — game cloud, cloud servers, cloud apps and more in one place."
+      },
+      "url": "https://www.rainyun.com/Stars22_",
       "rating": 5
     },
     {
-      "name": "接码平台",
-      "tags": ["service"],
-      "description": { "zh": "开发登录功能时用来测验证码，不用烧一张实体卡。", "en": "For testing SMS auth without burning a real SIM." },
-      "url": "https://sms-activate.org",
+      "name": "小白 SMS 接码",
+      "tags": ["sms"],
+      "description": {
+        "zh": "国内外短信验证码接码，一元起充，开发联调时省去实体卡。",
+        "en": "SMS verification codes home and abroad, top up from ¥1 — no physical SIM needed for dev testing."
+      },
+      "url": "https://xbsms.work/register?ref=7c058106",
       "rating": 3
     },
     {
-      "name": "OpenCodeGo",
-      "tags": ["software"],
-      "description": { "zh": "AI 结对编程，写代码像开了巡航定速。", "en": "AI pair programming — cruise control for code." },
-      "url": "",
-      "rating": 4
+      "name": "91HTTP",
+      "tags": ["proxy"],
+      "description": {
+        "zh": "高性价比代理 IP 服务，可作 NetFountain 项目的上游 IP 来源。",
+        "en": "Cost-effective proxy IP service, usable as an upstream IP source for my NetFountain project."
+      },
+      "url": "http://www.91http.com/user/reg?ref=invite&invite_id=129765",
+      "rating": 3
     },
     {
-      "name": "Obsidian",
-      "tags": ["software"],
-      "description": { "zh": "本地优先的双链笔记，我的第二大脑。", "en": "Local-first linked notes. My second brain." },
-      "url": "https://obsidian.md",
+      "name": "巨量HTTP",
+      "tags": ["proxy"],
+      "description": {
+        "zh": "高性价比代理 IP 服务，同样可搭配 NetFountain 项目使用。",
+        "en": "Cost-effective proxy IP service, likewise pair-able with my NetFountain project."
+      },
+      "url": "https://www.juliangip.com/user/reg?inviteCode=1081898",
+      "rating": 3
+    },
+    {
+      "name": "OpenCode Go",
+      "tags": ["ai"],
+      "description": {
+        "zh": "低成本开源编程模型订阅，每月约 10 美元，覆盖市面主流开源模型，部分性价比突出。",
+        "en": "A low-cost subscription for open-source coding models — about $10/month, covering most mainstream open models with standout value on some."
+      },
+      "url": "https://opencode.ai/",
       "rating": 5
     },
     {
-      "name": "Raycast",
-      "tags": ["software"],
-      "description": { "zh": "换掉 Spotlight 之后就再也回不去了。", "en": "Replaced Spotlight; never going back." },
-      "url": "https://raycast.com",
-      "rating": 5
+      "name": "魔戒",
+      "tags": ["proxy"],
+      "description": {
+        "zh": "代理订阅服务，可用于 Clash Verge 等客户端。",
+        "en": "A proxy subscription service, usable with Clash Verge and similar clients."
+      },
+      "url": "https://mojie.me/#/register?code=hU1qJ2tV",
+      "rating": 3
     },
     {
-      "name": "HHKB Professional",
-      "tags": ["hardware"],
-      "description": { "zh": "静电容的尽头，写代码像弹钢琴。", "en": "The endgame of keyboards. Typing feels like playing piano." },
-      "url": "https://hhkb.io",
-      "rating": 5
-    },
-    {
-      "name": "MX Master 3S",
-      "tags": ["hardware"],
-      "description": { "zh": "滚轮一滑到底的快乐，谁用谁知道。", "en": "That free-spinning scroll wheel is pure joy." },
-      "url": "https://www.logitech.com",
-      "rating": 4
-    },
-    {
-      "name": "Excalidraw",
-      "tags": ["web"],
-      "description": { "zh": "手绘风白板，画架构图和「传教」两相宜。", "en": "Hand-drawn whiteboard for diagrams and preaching ideas." },
-      "url": "https://excalidraw.com",
-      "rating": 4
-    },
-    {
-      "name": "MDN Web Docs",
-      "tags": ["web"],
-      "description": { "zh": "学前端的字典，没有之一。", "en": "The dictionary of the web. Period." },
-      "url": "https://developer.mozilla.org",
-      "rating": 5
-    },
-    {
-      "name": "《星际穿越》",
-      "tags": ["film"],
-      "description": { "zh": "五维空间里的书架，每次看都会哭。", "en": "The bookshelf in the fifth dimension. Cries every time." },
-      "url": "https://www.imdb.com/title/tt0816692/",
-      "rating": 5
-    },
-    {
-      "name": "《琅琊榜》",
-      "tags": ["film"],
-      "description": { "zh": "权谋剧巅峰，剧本工整得像一段好代码。", "en": "Peak political drama. The script is as clean as well-written code." },
-      "url": "",
-      "rating": 4
-    },
-    {
-      "name": "《塞尔达传说：王国之泪》",
-      "tags": ["game"],
-      "description": { "zh": "任天堂的物理引擎是我最好的老师。", "en": "Nintendo's physics engine is my favorite teacher." },
-      "url": "",
-      "rating": 5
-    },
-    {
-      "name": "《空洞骑士》",
-      "tags": ["game"],
-      "description": { "zh": "小团队做减法做到极致的教科书。", "en": "A textbook of doing less, better." },
-      "url": "",
-      "rating": 5
+      "name": "aityou",
+      "tags": ["tool"],
+      "description": {
+        "zh": "百度网盘解析与高速直链下载，每天 5G、单文件最大 1G，免费。",
+        "en": "Baidu Netdisk parsing and fast direct downloads — 5 GB/day, 1 GB per file, free."
+      },
+      "url": "https://aityou.com/",
+      "rating": 3
     }
   ]
 }

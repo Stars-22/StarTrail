@@ -6,7 +6,7 @@ interface Props {
   group: {
     id: string;
     name: Record<string, string>;
-    items: { name: string; icon?: string; badge?: string }[];
+    items: { name: Record<string, string>; icon?: string; badge?: string }[];
   };
   lang: Lang;
 }
@@ -17,7 +17,7 @@ const { group, lang } = Astro.props;
 <section class="skill-group">
   <h3 class="sg-name">{group.name[lang]}</h3>
   <div class="sg-badges">
-    {group.items.map((item) => <SkillBadge item={item} />)}
+    {group.items.map((item) => <SkillBadge item={item} lang={lang} />)}
   </div>
 </section>
 

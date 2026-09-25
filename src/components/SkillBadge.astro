@@ -1,28 +1,28 @@
 ---
 import Icon from './Icon.astro';
+import type { Lang } from '../utils/i18n';
 
 interface Props {
-  item: { name: string; icon?: string; badge?: string };
+  item: { name: Record<string, string>; icon?: string; badge?: string };
+  lang: Lang;
 }
 
-const { item } = Astro.props;
+const { item, lang } = Astro.props;
 const icon = item.icon ?? '';
 const isGeneric = icon.startsWith('generic:');
-const genericName = isGeneric ? icon.slice('generic:'.length) : '';
-const brandUrl = !isGeneric && icon ? `https://cdn.simpleicons.org/${icon}/B5451F` : '';
+const iconName = isGeneric ? icon.slice('generic:'.length) : icon;
+const label = item.name[lang] ?? item.name.zh ?? item.name.en ?? '';
 ---
 
 <span class="skill-badge">
   {
-    isGeneric ? (
-      <span class="sb-ico"><Icon name={genericName} size={14} /></span>
-    ) : brandUrl ? (
-      <img class="sb-img" src={brandUrl} alt="" width="14" height="14" loading="lazy" />
+    iconName ? (
+      <span class="sb-ico"><Icon name={iconName} size={14} /></span>
     ) : (
       item.badge && <img class="sb-img" src={item.badge} alt="" loading="lazy" />
     )
   }
-  <span class="sb-name">{item.name}</span>
+  <span class="sb-name">{label}</span>
 </span>
 
 <style>
@@ -46,7 +46,11 @@ const brandUrl = !isGeneric && icon ? `https://cdn.simpleicons.org/${icon}/B5451
   }
   .sb-ico {
     display: inline-flex;
-    color: var(--muted);
+    color: var(--accent);
+    transition: color var(--motion-fast) var(--ease);
+  }
+  .skill-badge:hover .sb-ico {
+    color: var(--accent-strong);
   }
   .sb-img {
     width: 14px;

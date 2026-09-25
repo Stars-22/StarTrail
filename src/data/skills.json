@@ -4,46 +4,62 @@
       "id": "languages",
       "name": { "zh": "语言", "en": "Languages" },
       "items": [
-        { "name": "TypeScript", "icon": "typescript", "badge": "https://img.shields.io/badge/TypeScript-B5543B?style=flat-square" },
-        { "name": "JavaScript", "icon": "javascript", "badge": "https://img.shields.io/badge/JavaScript-B5543B?style=flat-square" },
-        { "name": "Go", "icon": "go", "badge": "https://img.shields.io/badge/Go-B5543B?style=flat-square" },
-        { "name": "Rust", "icon": "rust", "badge": "https://img.shields.io/badge/Rust-B5543B?style=flat-square" },
-        { "name": "SQL", "icon": "generic:database", "badge": "https://img.shields.io/badge/SQL-B5543B?style=flat-square" }
+        { "name": { "zh": "C++", "en": "C++" }, "icon": "cplusplus" },
+        { "name": { "zh": "C", "en": "C" }, "icon": "c" },
+        { "name": { "zh": "Python", "en": "Python" }, "icon": "python" },
+        { "name": { "zh": "Go", "en": "Go" }, "icon": "go" },
+        { "name": { "zh": "TypeScript", "en": "TypeScript" }, "icon": "typescript" },
+        { "name": { "zh": "SQL", "en": "SQL" }, "icon": "generic:database" }
       ]
     },
     {
-      "id": "frontend",
-      "name": { "zh": "前端", "en": "Frontend" },
+      "id": "lowlevel",
+      "name": { "zh": "高性能 / 底层", "en": "Performance / Low-level" },
       "items": [
-        { "name": "React", "icon": "react", "badge": "https://img.shields.io/badge/React-B5543B?style=flat-square" },
-        { "name": "Vue 3", "icon": "vuedotjs", "badge": "https://img.shields.io/badge/Vue_3-B5543B?style=flat-square" },
-        { "name": "Svelte", "icon": "svelte", "badge": "https://img.shields.io/badge/Svelte-B5543B?style=flat-square" },
-        { "name": "Vite", "icon": "vite", "badge": "https://img.shields.io/badge/Vite-B5543B?style=flat-square" },
-        { "name": "Tailwind CSS", "icon": "tailwindcss", "badge": "https://img.shields.io/badge/Tailwind_CSS-B5543B?style=flat-square" },
-        { "name": "Canvas", "icon": "generic:image", "badge": "https://img.shields.io/badge/Canvas-B5543B?style=flat-square" },
-        { "name": "WebGL", "icon": "generic:cube", "badge": "https://img.shields.io/badge/WebGL-B5543B?style=flat-square" }
+        { "name": { "zh": "AVX2 / SIMD", "en": "AVX2 / SIMD" }, "icon": "generic:cpu" },
+        { "name": { "zh": "内存池", "en": "Memory Pool" }, "icon": "generic:database" },
+        { "name": { "zh": "多线程", "en": "Multithreading" }, "icon": "generic:cpu" },
+        { "name": { "zh": "缓存分块", "en": "Cache Blocking" }, "icon": "generic:layers" },
+        { "name": { "zh": "零拷贝 mmap", "en": "Zero-copy mmap" }, "icon": "generic:file" },
+        { "name": { "zh": "CMake", "en": "CMake" }, "icon": "cmake" },
+        { "name": { "zh": "Linux", "en": "Linux" }, "icon": "linux" }
       ]
     },
     {
-      "id": "backend",
-      "name": { "zh": "后端", "en": "Backend" },
+      "id": "server",
+      "name": { "zh": "服务端 / 网络", "en": "Backend / Networking" },
       "items": [
-        { "name": "Node.js", "icon": "nodedotjs", "badge": "https://img.shields.io/badge/Node.js-B5543B?style=flat-square" },
-        { "name": "NestJS", "icon": "nestjs", "badge": "https://img.shields.io/badge/NestJS-B5543B?style=flat-square" },
-        { "name": "PostgreSQL", "icon": "postgresql", "badge": "https://img.shields.io/badge/PostgreSQL-B5543B?style=flat-square" },
-        { "name": "Redis", "icon": "redis", "badge": "https://img.shields.io/badge/Redis-B5543B?style=flat-square" },
-        { "name": "Docker", "icon": "docker", "badge": "https://img.shields.io/badge/Docker-B5543B?style=flat-square" }
+        { "name": { "zh": "FastAPI", "en": "FastAPI" }, "icon": "fastapi" },
+        { "name": { "zh": "Go / Gin", "en": "Go / Gin" }, "icon": "go" },
+        { "name": { "zh": "asyncio", "en": "asyncio" }, "icon": "python" },
+        { "name": { "zh": "HTTP / SOCKS", "en": "HTTP / SOCKS" }, "icon": "generic:network" },
+        { "name": { "zh": "WebSocket / SSE", "en": "WebSocket / SSE" }, "icon": "generic:infinity" },
+        { "name": { "zh": "Docker", "en": "Docker" }, "icon": "docker" },
+        { "name": { "zh": "SQLite", "en": "SQLite" }, "icon": "sqlite" }
       ]
     },
     {
       "id": "engineering",
-      "name": { "zh": "工程", "en": "Engineering" },
+      "name": { "zh": "工程 / 工具链", "en": "Engineering / Toolchain" },
       "items": [
-        { "name": "Git", "icon": "git", "badge": "https://img.shields.io/badge/Git-B5543B?style=flat-square" },
-        { "name": "Linux", "icon": "linux", "badge": "https://img.shields.io/badge/Linux-B5543B?style=flat-square" },
-        { "name": "Nginx", "icon": "nginx", "badge": "https://img.shields.io/badge/Nginx-B5543B?style=flat-square" },
-        { "name": "CI/CD", "icon": "generic:infinity", "badge": "https://img.shields.io/badge/CI%2FCD-B5543B?style=flat-square" },
-        { "name": "Vitest", "icon": "vitest", "badge": "https://img.shields.io/badge/Vitest-B5543B?style=flat-square" }
+        { "name": { "zh": "Git", "en": "Git" }, "icon": "git" },
+        { "name": { "zh": "GitHub Actions", "en": "GitHub Actions" }, "icon": "githubactions" },
+        { "name": { "zh": "单元测试", "en": "Unit Testing" }, "icon": "generic:check" },
+        { "name": { "zh": "pytest", "en": "pytest" }, "icon": "pytest" },
+        { "name": { "zh": "ESLint / Prettier", "en": "ESLint / Prettier" }, "icon": "eslint" },
+        { "name": { "zh": "命令行", "en": "CLI" }, "icon": "generic:terminal" }
+      ]
+    },
+    {
+      "id": "architecture",
+      "name": { "zh": "架构 / 效能", "en": "Architecture / Productivity" },
+      "items": [
+        { "name": { "zh": "契约先行", "en": "Contract-first" }, "icon": "generic:file" },
+        { "name": { "zh": "注册表 + 策略", "en": "Registry + Strategy" }, "icon": "generic:layers" },
+        { "name": { "zh": "有界并发 / 背压", "en": "Bounded Concurrency" }, "icon": "generic:infinity" },
+        { "name": { "zh": "可恢复执行", "en": "Resumable Execution" }, "icon": "generic:database" },
+        { "name": { "zh": "故障转移", "en": "Failover" }, "icon": "generic:network" },
+        { "name": { "zh": "可观测性", "en": "Observability" }, "icon": "generic:activity" }
       ]
     }
   ]
