@@ -31,6 +31,10 @@ export async function onRequest(context: any) {
   if (request.method !== 'POST') return json({ error: 'method not allowed' }, 405);
   if (request.headers.get('x-cron-key') !== env.CRON_KEY) return json({ error: 'unauthorized' }, 401);
 
+  // EdgeOne 的 KV 绑定注入为「变量名同名」的全局变量（非 env 属性）。
+  const kv = (globalThis as any).STARS_KV;
+  if (!kv) return json({ error: 'KV binding STARS_KV not found' }, 503);
+
   const errors: any[] = [];
   const repos: Record<string, any> = {};
   let totalStars = 0;
@@ -46,7 +50,7 @@ export async function onRequest(context: any) {
             updatedAt: new Date().toISOString(),
           };
           totalStars += data.stargazers_count;
-          await env.STARS_KV.put(`stars:${repo}`, JSON.stringify(repos[repo]));
+          await kv.put(`stars:${repo}`, JSON.stringify(repos[repo]));
         } catch (error) {
           errors.push({ repo, message: String(error) });
         }
@@ -63,7 +67,7 @@ export async function onRequest(context: any) {
       totalStars,
       updatedAt: new Date().toISOString(),
     };
-    await env.STARS_KV.put('user:stats', JSON.stringify(user));
+    await kv.put('user:stats', JSON.stringify(user));
   } catch (error) {
     errors.push({ repo: `user:${reposManifest.user}`, message: String(error) });
   }

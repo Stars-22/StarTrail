@@ -376,7 +376,7 @@ KV 键空间：
 1. 控制台「导入 Git 仓库」选择本仓库，开启 push 自动构建。
 2. 构建命令 `npm run build`，输出目录 `dist`，Node 版本 20。
 3. 配置环境变量 `CRON_KEY`、`GITHUB_TOKEN`（生产与预览环境同配）。
-4. 创建 KV 命名空间并绑定到函数（变量名与 `functions` 中使用的 `env.STARS_KV` 一致）。
+4. 创建 KV 命名空间并绑定到函数（**变量名必须是 `STARS_KV`**）。注意 EdgeOne 将 KV 绑定注入为「变量名同名」的**全局变量**，函数内应直接使用 `STARS_KV`，而非 `env.STARS_KV`（`env` 仅承载环境变量，如 `CRON_KEY`、`GITHUB_TOKEN`）。
 5. 部署完成后验证：
 
    ```bash

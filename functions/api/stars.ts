@@ -10,10 +10,12 @@ function json(body: unknown, status: number, cache = true) {
 }
 
 export async function onRequest(context: any) {
-  const { request, env } = context;
+  const { request } = context;
   if (request.method !== 'GET') return json({ error: 'method not allowed' }, 405, false);
 
-  const kv = env.STARS_KV;
+  // EdgeOne 的 KV 绑定注入为「变量名同名」的全局变量（非 env 属性）。
+  const kv = (globalThis as any).STARS_KV;
+  if (!kv) return json({ error: 'KV binding STARS_KV not found' }, 503, false);
   const result: { user: any; repos: Record<string, any> } = { user: null, repos: {} };
 
   const userRaw = await kv.get('user:stats');
