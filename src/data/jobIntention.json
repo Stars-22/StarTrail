@@ -1,0 +1,6 @@
+{
+  "location": { "zh": "北京、杭州优先", "en": "Beijing, Hangzhou preferred" },
+  "industry": { "zh": "游戏行业优先", "en": "Gaming preferred" },
+  "role": { "zh": "C++ 服务端工程师", "en": "C++ Backend Engineer" },
+  "salary": { "zh": "250–400 元 / 天", "en": "¥250–400 / day" }
+}

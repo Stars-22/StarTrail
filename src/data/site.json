@@ -23,6 +23,7 @@
     "awards": true,
     "recommendations": true,
     "githubStats": true,
+    "jobIntention": true,
     "starAutoUpdate": true
   }
 }

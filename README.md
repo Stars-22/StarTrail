@@ -73,7 +73,7 @@ StarTrail/
 │  └─ images/avatar.svg        # 头像占位
 └─ src/
    ├─ data/                    # 全部可修改内容配置
-   │  ├─ site.json  profile.json  contact.json  now.json
+   │  ├─ site.json  profile.json  contact.json  jobIntention.json  now.json
    │  └─ skills.json  experience.json  awards.json  recommendations.json
    ├─ i18n/{zh.json, en.json}  # 界面文案（键集合必须一致）
    ├─ content/
@@ -158,6 +158,7 @@ npm run check     # astro check（类型/内容诊断）
 | `awards` | 经历页「奖项证书」区块 |
 | `recommendations` | 「推荐」路由与导航项 |
 | `githubStats` | 关于页「GitHub 统计」区块 |
+| `jobIntention` | 关于页「求职意向」区块 |
 | `starAutoUpdate` | 前端是否用 `/api/stars` 替换卡片/统计的构建兜底值（`false` 时只显示构建值） |
 
 > `skills / experience / awards` 三者全关时，经历页与对应导航项不生成。
@@ -191,6 +192,10 @@ npm run check     # astro check（类型/内容诊断）
 | `email` | 邮箱 | `mailto:` 链接 |
 | `website` | URL | 外链新标签（可带 `label` 自定义显示名） |
 | `leetcode` | 力扣主页 URL | 外链新标签 |
+
+### jobIntention.json（求职意向，仅关于页）
+
+对象，四个选填字段：`location`（期望地点）、`industry`（期望行业）、`role`（期望岗位）、`salary`（期望薪资），均为 i18n 文本 `{ "zh": "…", "en": "…" }`。**某字段在当前语言下的值为空（或纯空白）时不在界面显示**；四字段全空时不渲染整个区块。另有功能开关 `features.jobIntention` 可整体关闭该区块。
 
 ### now.json（近况）
 
@@ -312,7 +317,7 @@ forks: 156                           # 可选，构建时兜底值
 | 路由 | 文件 | 说明 |
 | --- | --- | --- |
 | `/` | `src/pages/index.astro` | 语言引导（跳 `/{lang}/`） |
-| `/{lang}/` | `src/pages/[lang]/index.astro` | 关于（介绍、状态、GitHub 统计、联系方式） |
+| `/{lang}/` | `src/pages/[lang]/index.astro` | 关于（介绍、状态、求职意向、GitHub 统计、联系方式） |
 | `/{lang}/now` | `src/pages/[lang]/now.astro` | 近况 |
 | `/{lang}/projects` | `src/pages/[lang]/projects.astro` | 项目卡片列表 |
 | `/{lang}/projects/{slug}` | `src/pages/[lang]/projects/[slug].astro` | 项目详情 |

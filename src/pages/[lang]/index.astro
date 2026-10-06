@@ -5,6 +5,7 @@ import DefinitionRows from '../../components/DefinitionRows.astro';
 import GitHubStats from '../../components/GitHubStats.astro';
 import ContactList from '../../components/ContactList.astro';
 import profile from '../../data/profile.json';
+import jobIntention from '../../data/jobIntention.json';
 import site from '../../data/site.json';
 import { t, langs, type Lang } from '../../utils/i18n';
 import { features } from '../../utils/features';
@@ -25,6 +26,13 @@ const rows = [
   { label: t(lang, 'about.roles'), value: profile.roles[lang].join(' · ') },
   { label: t(lang, 'about.status'), value: profile.status[lang] },
 ];
+
+const intentionRows = [
+  { label: t(lang, 'about.intentionLocation'), value: jobIntention.location[lang] },
+  { label: t(lang, 'about.intentionIndustry'), value: jobIntention.industry[lang] },
+  { label: t(lang, 'about.intentionRole'), value: jobIntention.role[lang] },
+  { label: t(lang, 'about.intentionSalary'), value: jobIntention.salary[lang] },
+].filter((row) => row.value && row.value.trim());
 ---
 
 <BaseLayout
@@ -43,6 +51,15 @@ const rows = [
     <h2>{t(lang, 'about.currentStatus')}</h2>
     <DefinitionRows rows={rows} />
   </section>
+
+  {
+    features.jobIntention && intentionRows.length > 0 && (
+      <section class="section">
+        <h2>{t(lang, 'about.jobIntention')}</h2>
+        <DefinitionRows rows={intentionRows} />
+      </section>
+    )
+  }
 
   {features.githubStats && <GitHubStats lang={lang} />}
 
