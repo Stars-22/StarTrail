@@ -21,7 +21,7 @@
     "skills": true,
     "experience": true,
     "awards": true,
-    "recommendations": true,
+    "recommendations": false,
     "githubStats": true,
     "jobIntention": true,
     "starAutoUpdate": true
